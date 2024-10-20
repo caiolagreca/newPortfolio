@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using api.data;
+using api.Interfaces;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+
+//porque passar o tipo dos metodos como Task<ActionResult<Article>> ao inves de simplesmente Task<IActionResult>?
 
 namespace api.Controllers
 {
@@ -15,88 +12,63 @@ namespace api.Controllers
     [ApiController]
     public class ArticleController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        public ArticleController(AppDbContext context)
+        private readonly IArticleService _articleService;
+        public ArticleController(IArticleService articleService)
         {
-            _context = context;
+            _articleService = articleService;
         }
 
-        // GET: api/Articles
+        // GET: api/Article
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
         {
-            return await _context.Articles.ToListAsync();
+            var articles = await _articleService.GetAllAsync();
+            return Ok(articles);
         }
 
-        // GET: api/Articles/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Article>> GetArticle(int id)
+        // GET: api/Article/5
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Article>> GetArticle([FromRoute] int id)
         {
-            var article = await _context.Articles.FindAsync(id);
+            var article = await _articleService.GetByIdAsync(id);
             if (article == null)
             {
                 return NotFound();
             }
-            return article;
+            return Ok(article);
         }
 
-        // POST: api/Articles
+        // POST: api/Article
         [HttpPost]
-        public async Task<ActionResult<Article>> PostArticle(Article article)
+        public async Task<ActionResult<Article>> AddArticle([FromBody] Article article)
         {
-            _context.Articles.Add(article);
-            await _context.SaveChangesAsync();
+            await _articleService.CreateAsync(article);
+            //o que faz essa funcao? porque
             return CreatedAtAction(nameof(GetArticle), new { id = article.Id }, article);
         }
 
-        // PUT: api/Articles/5
+        // PUT: api/Article/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<Article>> PutArticle(int id, Article article)
+        public async Task<ActionResult<Article>> UpdateArticle([FromRoute] int id, [FromBody] Article updatedArticle)
         {
-            if (id != article.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(article).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ArticleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return NoContent();
-        }
-
-        // DELETE: api/Articles/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArticle(int id)
-        {
-            var article = await _context.Articles.FindAsync(id);
+            var article = _articleService.UpdateAsync(id, updatedArticle);
             if (article == null)
             {
                 return NotFound();
             }
-
-            _context.Articles.Remove(article);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(article);
         }
 
-        private bool ArticleExists(int id)
+        // DELETE: api/Article/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteArticle(int id)
         {
-            return _context.Articles.Any(e => e.Id == id);
+            var article = await _articleService.DeleteAsync(id);
+            if (article == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
     }
 }
