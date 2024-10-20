@@ -9,7 +9,7 @@ namespace api.Interfaces
     public interface IArticleService
     {
 
-        Task<IEnumerable<Article>> GetAllAsync(); //porque IEnumerable ao inves de IList?
+        Task<IEnumerable<Article>> GetAllAsync();
         Task<Article> GetByIdAsync(int id);
         Task<Article> CreateAsync(Article article);
         Task<Article> UpdateAsync(int id, Article updatedArticle);

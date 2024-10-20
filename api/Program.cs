@@ -1,4 +1,6 @@
 using api.data;
+using api.Interfaces;
+using api.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,12 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 //ConnectionString in the EnvironmentVariable
 builder.Configuration.AddEnvironmentVariables();
 
+builder.Services.AddScoped<IArticleService, ArticleService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConecction")));
+builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConection")));
 
 var app = builder.Build();
 
@@ -21,10 +25,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-Console.WriteLine($"Connection String: {connectionString}");
-
 
 app.UseHttpsRedirection();
 

@@ -4,8 +4,6 @@ using api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-//porque passar o tipo dos metodos como Task<ActionResult<Article>> ao inves de simplesmente Task<IActionResult>?
-
 namespace api.Controllers
 {
     [Route("api/[controller]")]
@@ -43,7 +41,6 @@ namespace api.Controllers
         public async Task<ActionResult<Article>> AddArticle([FromBody] Article article)
         {
             await _articleService.CreateAsync(article);
-            //o que faz essa funcao? porque
             return CreatedAtAction(nameof(GetArticle), new { id = article.Id }, article);
         }
 
@@ -51,7 +48,11 @@ namespace api.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Article>> UpdateArticle([FromRoute] int id, [FromBody] Article updatedArticle)
         {
-            var article = _articleService.UpdateAsync(id, updatedArticle);
+            if (id != updatedArticle.Id)
+            {
+                return BadRequest("ID mismatch.");
+            }
+            var article = await _articleService.UpdateAsync(id, updatedArticle);
             if (article == null)
             {
                 return NotFound();

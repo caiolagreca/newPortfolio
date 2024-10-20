@@ -25,7 +25,7 @@ namespace api.Services
 
         public async Task<Article> GetByIdAsync(int id)
         {
-            return await _context.Articles.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Articles.FindAsync(id);
         }
 
         public async Task<Article> CreateAsync(Article article)
@@ -37,7 +37,12 @@ namespace api.Services
         }
         public async Task<Article> UpdateAsync(int id, Article updatedArticle)
         {
-            var existingArticle = await _context.Articles.FirstOrDefaultAsync(x => x.Id == id);
+            if (id != updatedArticle.Id)
+            {
+                return null;
+            }
+
+            var existingArticle = await _context.Articles.FindAsync(id);
             if (existingArticle == null)
             {
                 return null;
@@ -56,8 +61,7 @@ namespace api.Services
         }
         public async Task<Article> DeleteAsync(int id)
         {
-            //Devo usar FirstOrDefaultAsync(x => x.Id == id) ou FindAsync(id)? porque
-            var article = await _context.Articles.FirstOrDefaultAsync(x => x.Id == id);
+            var article = await _context.Articles.FindAsync(id);
             if (article == null) return null;
 
             _context.Articles.Remove(article);
