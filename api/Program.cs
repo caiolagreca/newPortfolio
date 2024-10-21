@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddScoped<IArticleService, ArticleService>();
+builder.Services.AddScoped<IBookInterface, BookService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -43,10 +43,6 @@ namespace api.Services
             }
 
             var existingArticle = await _context.Articles.FindAsync(id);
-            if (existingArticle == null)
-            {
-                return null;
-            }
 
             existingArticle.Title = updatedArticle.Title;
             existingArticle.Description = updatedArticle.Description;
