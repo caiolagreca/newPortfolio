@@ -14,11 +14,18 @@ builder.Services.AddScoped<IService<Book>, BookService>();
 builder.Services.AddScoped<IService<Challenge>, ChallengeService>();
 builder.Services.AddScoped<IService<ProfessionalExperience>, ProExpService>();
 builder.Services.AddScoped<IService<Project>, ProjectService>();
+builder.Services.AddScoped<IService<Skill>, SkillService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+});
 
 builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -35,5 +42,6 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
+app.UseCors("AllowAll");
 
 app.Run();

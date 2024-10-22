@@ -10,10 +10,10 @@ namespace api.Models
     {
         public int Id { get; set; }
         [Required]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
         public string? Description { get; set; }
         public string? Topic { get; set; }
-        public string ImageUrl { get; set; }
-        public string UrlArticle { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
+        public string UrlArticle { get; set; } = string.Empty;
     }
 }

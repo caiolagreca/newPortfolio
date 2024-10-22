@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace api.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProjectController : ControllerBase
     {
@@ -21,14 +21,13 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Project>>> GetAllProjects()
+        public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
         {
             var projects = await _projectService.GetAllAsync();
             return Ok(projects);
         }
 
         [HttpGet("{id}")]
-
         public async Task<ActionResult<Project>> GetProject(int id)
         {
             var project = await _projectService.GetByIdAsync(id);

@@ -10,11 +10,11 @@ namespace api.Models
     {
         public int Id { get; set; }
         [Required]
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
         public string? UrlWebsite { get; set; }
-        public string UrlRepository { get; set; }
+        public string UrlRepository { get; set; } = string.Empty;
         public List<ProjectSkill> ProjectSkills { get; set; } = new List<ProjectSkill>();
     }
 }
