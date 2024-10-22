@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
 {
-    public class BookService : IBookInterface
+    public class BookService : IBookService
     {
         private readonly AppDbContext _context;
 
@@ -43,6 +43,7 @@ namespace api.Services
             }
 
             var existingBook = await _context.Books.FindAsync(id);
+            if (existingBook == null) return null;
 
             existingBook.Title = book.Title;
             existingBook.Author = book.Author;

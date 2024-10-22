@@ -1,22 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using api.Interfaces;
 using api.Models;
-using api.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace api.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [ApiController] //Habilit Automatic Vallidation
     public class BookController : ControllerBase
     {
-        private readonly IBookInterface _bookService;
+        private readonly IBookService _bookService;
 
-        public BookController(IBookInterface bookService)
+        public BookController(IBookService bookService)
         {
             _bookService = bookService;
         }
@@ -29,6 +23,7 @@ namespace api.Controllers
             return Ok(books);
         }
 
+        //GET: api/Book/1
         [HttpGet("{id}")]
         public async Task<ActionResult<Book>> GetBook(int id)
         {
@@ -37,14 +32,15 @@ namespace api.Controllers
             return Ok(book);
         }
 
+        //POST: api/Book
         [HttpPost]
         public async Task<ActionResult<Book>> AddBook([FromBody] Book book)
         {
             await _bookService.CreateAsync(book);
-            /* return CreatedAtAction(nameof(GetArticle), new { id = article.Id }, article); */
-            return Ok(book);
+            return CreatedAtAction(nameof(GetBook), new { id = book.Id }, book);
         }
 
+        //PUT: api/Book/1
         [HttpPut("{id}")]
         public async Task<ActionResult<Book>> UpdateBook(int id, [FromBody] Book book)
         {
@@ -58,11 +54,12 @@ namespace api.Controllers
             return Ok(updatedBook);
         }
 
+        //DELETE: api/Book/1
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBook(int id)
         {
-            var article = await _bookService.DeleteAsync(id);
-            if (article == null) return NotFound();
+            var book = await _bookService.DeleteAsync(id);
+            if (book == null) return NotFound();
             return NoContent();
         }
     }

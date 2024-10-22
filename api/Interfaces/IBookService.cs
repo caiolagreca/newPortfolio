@@ -6,7 +6,7 @@ using api.Models;
 
 namespace api.Interfaces
 {
-    public interface IBookInterface
+    public interface IBookService
     {
         Task<IEnumerable<Book>> GetAllAsync();
         Task<Book> GetByIdAsync(int id);
