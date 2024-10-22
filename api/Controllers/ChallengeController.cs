@@ -9,9 +9,9 @@ namespace api.Controllers
     [ApiController]
     public class ChallengeController : ControllerBase
     {
-        private readonly IChallengeService _challengeService;
+        private readonly IService<Challenge> _challengeService;
 
-        public ChallengeController(IChallengeService challengeService)
+        public ChallengeController(IService<Challenge> challengeService)
         {
             _challengeService = challengeService;
         }
@@ -53,7 +53,8 @@ namespace api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Challenge>> DeleteChallenge(int id)
         {
-            await _challengeService.DeleteAsync(id);
+            var success = await _challengeService.DeleteAsync(id);
+            if (!success) return NotFound();
             return NoContent();
         }
     }

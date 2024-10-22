@@ -8,9 +8,9 @@ namespace api.Controllers
     [ApiController] //Habilit Automatic Vallidation
     public class BookController : ControllerBase
     {
-        private readonly IBookService _bookService;
+        private readonly IService<Book> _bookService;
 
-        public BookController(IBookService bookService)
+        public BookController(IService<Book> bookService)
         {
             _bookService = bookService;
         }
@@ -58,8 +58,8 @@ namespace api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBook(int id)
         {
-            var book = await _bookService.DeleteAsync(id);
-            if (book == null) return NotFound();
+            var success = await _bookService.DeleteAsync(id);
+            if (!success) return NotFound();
             return NoContent();
         }
     }

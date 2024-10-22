@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
 {
-    public class BookService : IBookService
+    public class BookService : IService<Book>
     {
         private readonly AppDbContext _context;
 
@@ -54,14 +54,14 @@ namespace api.Services
             return existingBook;
         }
 
-        public async Task<Book> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var book = await _context.Books.FindAsync(id);
-            if (book == null) return null;
+            if (book == null) return false;
 
             _context.Books.Remove(book);
             await _context.SaveChangesAsync();
-            return book;
+            return true;
         }
     }
 }

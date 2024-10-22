@@ -14,9 +14,9 @@ namespace api.Controllers
     [ApiController]
     public class ProExpController : ControllerBase
     {
-        private readonly IProExpService _proExpService;
+        private readonly IService<ProfessionalExperience> _proExpService;
 
-        public ProExpController(IProExpService proExpService)
+        public ProExpController(IService<ProfessionalExperience> proExpService)
         {
             _proExpService = proExpService;
         }
@@ -53,7 +53,7 @@ namespace api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ProfessionalExperience>> DeleteExperience(int id)
+        public async Task<IActionResult> DeleteExperience(int id)
         {
             var success = await _proExpService.DeleteAsync(id);
             if (!success) return NotFound();

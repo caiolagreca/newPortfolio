@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
 {
-    public class ProExpService : IProExpService
+    public class ProExpService : IService<ProfessionalExperience>
     {
         private readonly AppDbContext _context;
 
@@ -49,6 +49,8 @@ namespace api.Services
             existingExperience.IsCurrent = experience.IsCurrent;
             existingExperience.Description = experience.Description;
 
+            existingExperience.ProfessionalExpSkills.Clear();
+
             foreach (var skill in experience.ProfessionalExpSkills)
             {
                 existingExperience.ProfessionalExpSkills.Add(new ProfessionalExpSkill
@@ -58,7 +60,7 @@ namespace api.Services
             }
 
             await _context.SaveChangesAsync();
-            return experience;
+            return existingExperience;
         }
 
         public async Task<bool> DeleteAsync(int id)

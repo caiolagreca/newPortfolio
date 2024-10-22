@@ -1,5 +1,6 @@
 using api.data;
 using api.Interfaces;
+using api.Models;
 using api.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,16 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 //ConnectionString in the EnvironmentVariable
 builder.Configuration.AddEnvironmentVariables();
 
-builder.Services.AddScoped<IArticleService, ArticleService>();
-builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IChallengeService, ChallengeService>();
+builder.Services.AddScoped<IService<Article>, ArticleService>();
+builder.Services.AddScoped<IService<Book>, BookService>();
+builder.Services.AddScoped<IService<Challenge>, ChallengeService>();
+builder.Services.AddScoped<IService<ProfessionalExperience>, ProExpService>();
+builder.Services.AddScoped<IService<Project>, ProjectService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConection")));
+builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

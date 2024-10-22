@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
 {
-    public class ChallengeService : IChallengeService
+    public class ChallengeService : IService<Challenge>
     {
         private readonly AppDbContext _context;
 
@@ -50,14 +50,14 @@ namespace api.Services
             return existingChallenge;
         }
 
-        public async Task<Challenge> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var challenge = await _context.Challenges.FirstOrDefaultAsync(x => x.Id == id);
-            if (challenge == null) return null;
+            if (challenge == null) return false;
 
             _context.Challenges.Remove(challenge);
             await _context.SaveChangesAsync();
-            return challenge;
+            return true;
         }
     }
 }

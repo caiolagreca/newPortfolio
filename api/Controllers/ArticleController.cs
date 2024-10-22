@@ -8,8 +8,8 @@ namespace api.Controllers
     [ApiController]
     public class ArticleController : ControllerBase
     {
-        private readonly IArticleService _articleService;
-        public ArticleController(IArticleService articleService)
+        private readonly IService<Article> _articleService;
+        public ArticleController(IService<Article> articleService)
         {
             _articleService = articleService;
         }
@@ -62,8 +62,8 @@ namespace api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteArticle(int id)
         {
-            var article = await _articleService.DeleteAsync(id);
-            if (article == null)
+            var success = await _articleService.DeleteAsync(id);
+            if (!success)
             {
                 return NotFound();
             }
