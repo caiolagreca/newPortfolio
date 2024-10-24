@@ -25,7 +25,7 @@ namespace api.Services
 
         public async Task<Challenge> GetByIdAsync(int id)
         {
-            return await _context.Challenges.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Challenges.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Challenge> CreateAsync(Challenge challenge)

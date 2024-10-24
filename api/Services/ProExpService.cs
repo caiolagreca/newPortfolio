@@ -20,12 +20,12 @@ namespace api.Services
 
         public async Task<IEnumerable<ProfessionalExperience>> GetAllAsync()
         {
-            return await _context.ProfessionalExperiences.Include(x => x.ProfessionalExpSkills).ThenInclude(x => x.Skill).AsNoTracking().ToListAsync();
+            return await _context.ProfessionalExperiences.Include(x => x.ProfessionalExpSkills).ThenInclude(x => x.Skill) .ToListAsync();
         }
 
         public async Task<ProfessionalExperience> GetByIdAsync(int id)
         {
-            return await _context.ProfessionalExperiences.Include(x => x.ProfessionalExpSkills).ThenInclude(x => x.Skill).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.ProfessionalExperiences.Include(x => x.ProfessionalExpSkills).ThenInclude(x => x.Skill).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<ProfessionalExperience> CreateAsync(ProfessionalExperience experience)

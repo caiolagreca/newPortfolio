@@ -19,12 +19,12 @@ namespace api.Services
 
         public async Task<IEnumerable<Project>> GetAllAsync()
         {
-            return await _context.Projects.Include(x => x.ProjectSkills).ThenInclude(x => x.Skill).AsNoTracking().ToListAsync();
+            return await _context.Projects.Include(x => x.ProjectSkills).ThenInclude(x => x.Skill).ToListAsync();
         }
 
         public async Task<Project> GetByIdAsync(int id)
         {
-            return await _context.Projects.Include(x => x.ProjectSkills).ThenInclude(x => x.Skill).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Projects.Include(x => x.ProjectSkills).ThenInclude(x => x.Skill).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Project> CreateAsync(Project project)

@@ -27,7 +27,7 @@ namespace api.data
         public DbSet<Challenge> Challenges { get; set; }
         public DbSet<ProfessionalExperience> ProfessionalExperiences { get; set; }
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Skill> Skill { get; set; }
         public DbSet<ProjectSkill> ProjectSkills { get; set; }
         public DbSet<ProfessionalExpSkill> ProfessionalExpSkills { get; set; }
     }
