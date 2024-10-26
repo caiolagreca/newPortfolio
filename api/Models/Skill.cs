@@ -13,6 +13,7 @@ namespace api.Models
         [Required]
         public string Name { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
+        [JsonIgnore]
         public List<ProjectSkill>? ProjectSkills { get; set; } = new List<ProjectSkill>();
         [JsonIgnore]
         public List<ProfessionalExpSkill>? ProfessionalExpSkills { get; set; } = new List<ProfessionalExpSkill>();
