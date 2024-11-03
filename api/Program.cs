@@ -24,7 +24,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader());
 
 });
 
@@ -43,6 +43,6 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
-app.UseCors("AllowAll");
+app.UseCors("AllowFrontend");
 
 app.Run();
