@@ -29,14 +29,12 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="w-full">
-      {/* Barra fixa centralizada com itens do menu, visível apenas em telas médias e maiores */}
       <div className="hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 backdrop-blur-md rounded-full px-6 py-3 shadow-lg max-w-max items-center justify-center space-x-16 transition-all duration-300 hover:shadow-xl hover:bg-opacity-90 z-50">
         {menuItems.map((item, index) => (
           <NavbarItem key={index} item={item} />
         ))}
       </div>
 
-      {/* Botão de menu mobile no canto esquerdo */}
       <div className="absolute left-4 top-4 md:hidden ml-4 mt-2">
         <button
           onClick={() => setNavbarOpen(!navbarOpen)}
@@ -59,7 +57,6 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Botão de alternância de tema no canto direito */}
       <div className="fixed right-4 top-5">
         <button
           onClick={() => setLight(!light)}
@@ -75,7 +72,6 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Menu Mobile Overlay */}
       {navbarOpen && (
         <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center pt-20">
           {menuItems.map((item, index) => (
