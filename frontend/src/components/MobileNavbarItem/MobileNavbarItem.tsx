@@ -1,5 +1,5 @@
 import React from "react";
-import { Item } from "../../types/Item";
+import { Item } from "../../Types/Item";
 
 interface IMobileItem {
 	item: Item;
