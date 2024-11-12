@@ -1,10 +1,10 @@
 import axios from "axios";
-import { Skill } from "../Types/Skill";
+import { Experience } from "../Types/Experience";
 
-export const getSkillService = async () => {
+export const getExperienceService = async () => {
 	try {
-		const response = await axios.get<Skill[]>(
-			'http://localhost:5058/api/Skill'
+		const response = await axios.get<Experience[]>(
+			"http://localhost:5058/api/proExp"
 		);
 		return response;
 	} catch (error) {
