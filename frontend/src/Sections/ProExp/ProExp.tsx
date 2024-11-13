@@ -53,7 +53,7 @@ const ProExp = () => {
         {serverError ? (
           <p className="text-red-500 text-center">{serverError}</p>
         ) : (
-          <div className="flex flex-1 border rounded-lg overflow-hidden shadow-lg">
+          <div className="flex flex-1 border rounded-lg overflow-hidden shadow-lg mb-5">
             {/* Sidebar */}
             <div className="md:w-1/4 bg-white border-r overflow-y-auto">
               <ul className="flex md:flex-col overflow-x-auto md:overflow-visible">
