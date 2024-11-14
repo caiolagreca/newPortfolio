@@ -4,6 +4,9 @@ import Skills from "./Sections/Skills/Skills";
 import About from "./Sections/AboutMe/About";
 import ProExp from "./Sections/ProExp/ProExp";
 import FullResume from "./components/FullResume/FullResume";
+import Projects from "./Sections/Projects/Projects";
+import GithubLink from "./components/GithubLink/GithubLink";
+import Articles from "./Sections/Articles/Articles";
 
 function App() {
 	return (
@@ -14,6 +17,9 @@ function App() {
 			<Skills />
 			<ProExp />
 			<FullResume />
+			<Projects />
+			<GithubLink />
+			<Articles />
 		</>
 	);
 }
