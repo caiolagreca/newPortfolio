@@ -7,6 +7,9 @@ import FullResume from "./components/FullResume/FullResume";
 import Projects from "./Sections/Projects/Projects";
 import GithubLink from "./components/GithubLink/GithubLink";
 import Articles from "./Sections/Articles/Articles";
+import Challenges from "./Sections/Challenges/Challenges";
+import Books from "./Sections/Books/Books";
+
 
 function App() {
 	return (
@@ -20,6 +23,8 @@ function App() {
 			<Projects />
 			<GithubLink />
 			<Articles />
+			<Challenges />
+			<Books />
 		</>
 	);
 }

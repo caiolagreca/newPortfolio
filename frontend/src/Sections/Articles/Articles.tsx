@@ -8,7 +8,7 @@ const Articles = () => {
 	const [serverError, setServerError] = useState<string | null>(null);
 
 	useEffect(() => {
-		const fetchArticles = async () => {
+		const getArticles = async () => {
 			const result = await getArticleService();
 			if (typeof result === "string") {
 				setServerError(result);
@@ -16,17 +16,19 @@ const Articles = () => {
 				setArticles(result.data);
 			}
 		};
-		fetchArticles();
+		getArticles();
 	}, []);
 
 	return (
 		<section id="articles" className="py-16 bg-gray-50">
 			<div className="max-w-6xl mx-auto px-6 md:px-8 text-center">
-				<h2 className="text-3xl font-semibold text-gray-800 mb-12">Articles I've Written</h2>
+				<h2 className="text-3xl font-semibold text-gray-800 mb-12">
+					Articles I've Written
+				</h2>
 				{serverError ? (
 					<p className="text-red-500">{serverError}</p>
 				) : (
-					<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+					<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 						{articles.map((article) => (
 							<motion.div
 								key={article.title}
@@ -39,10 +41,10 @@ const Articles = () => {
 									className="w-full h-48 object-cover"
 								/>
 								<div className="p-6">
-									<h3 className="text-lg font-medium text-gray-800 mb-1">
+									<h3 className="text-base font-medium text-gray-800 mb-1">
 										{article.title}
 									</h3>
-									<p className="text-gray-500 text-sm mb-3">
+									<p className="text-gray-500 text-xs mb-3">
 										{article.description}
 									</p>
 									<a
