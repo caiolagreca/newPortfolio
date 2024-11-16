@@ -9,7 +9,8 @@ import GithubLink from "./components/GithubLink/GithubLink";
 import Articles from "./Sections/Articles/Articles";
 import Challenges from "./Sections/Challenges/Challenges";
 import Books from "./Sections/Books/Books";
-
+import Contact from "./Sections/Contact/Contact";
+import Footer from "./Sections/Fotter/Footer";
 
 function App() {
 	return (
@@ -25,6 +26,8 @@ function App() {
 			<Articles />
 			<Challenges />
 			<Books />
+			<Contact />
+			<Footer />
 		</>
 	);
 }

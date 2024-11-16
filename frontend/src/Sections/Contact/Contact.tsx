@@ -1,0 +1,194 @@
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+
+// IDs do EmailJS - certifique-se de que estão definidos corretamente
+const serviceID = process.env.REACT_APP_YOUR_SERVICE_ID;
+const templateID = process.env.REACT_APP_YOUR_TEMPLATE_ID;
+const publicKey = process.env.REACT_APP_YOUR_PUBLIC_KEY;
+
+const Contact: React.FC = () => {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		subject: "",
+		message: "",
+	});
+
+	const [statusMessage, setStatusMessage] = useState<string | null>(null);
+	const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+	const [showPopup, setShowPopup] = useState<boolean>(false);
+
+	// Handle form input changes
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+
+		emailjs
+			.send(`${serviceID}`, `${templateID}`, formData, `${publicKey}`)
+			.then(
+				(result) => {
+					console.log("Email sent:", result.text);
+					setStatusMessage("Your email was sent successfully!");
+					setIsSuccess(true);
+					setShowPopup(true);
+					// Reset form fields
+					setFormData({
+						name: "",
+						email: "",
+						subject: "",
+						message: "",
+					});
+				},
+				(error) => {
+					console.error("Email error:", error.text);
+					setStatusMessage(
+						"Sorry, something got wrong. Try again in a few seconds."
+					);
+					setIsSuccess(false);
+					setShowPopup(true);
+				}
+			);
+	};
+
+	// Função para fechar o popup
+	const closePopup = () => {
+		setShowPopup(false);
+		setStatusMessage(null);
+		setIsSuccess(null);
+	};
+
+	return (
+		<section id="contact" className="py-16 bg-gray-100 relative">
+			<div className="max-w-4xl mx-auto px-6 md:px-8">
+				<h2 className="text-4xl font-bold text-center text-gray-800 mb-4">
+					Get in Touch
+				</h2>
+				<p className="text-center text-gray-600 mb-12">
+					Have a project in mind or just want to say hi? Feel free to send me a
+					message!
+				</p>
+				<form
+					onSubmit={handleSubmit}
+					className="space-y-6 max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg"
+				>
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						{/* Name Input */}
+						<div>
+							<label
+								htmlFor="name"
+								className="block text-sm font-medium text-gray-700"
+							>
+								Name
+							</label>
+							<input
+								type="text"
+								name="name"
+								id="name"
+								required
+								value={formData.name}
+								onChange={handleChange}
+								className="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+								placeholder="Your Name"
+							/>
+						</div>
+						{/* Email Input */}
+						<div>
+							<label
+								htmlFor="email"
+								className="block text-sm font-medium text-gray-700"
+							>
+								Email
+							</label>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								required
+								value={formData.email}
+								onChange={handleChange}
+								className="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+								placeholder="your.email@example.com"
+							/>
+						</div>
+					</div>
+					{/* Subject Input */}
+					<div>
+						<label
+							htmlFor="subject"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Subject
+						</label>
+						<input
+							type="text"
+							name="subject"
+							id="subject"
+							required
+							value={formData.subject}
+							onChange={handleChange}
+							className="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+							placeholder="Subject"
+						/>
+					</div>
+					{/* Message Input */}
+					<div>
+						<label
+							htmlFor="message"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Message
+						</label>
+						<textarea
+							name="message"
+							id="message"
+							required
+							rows={6}
+							value={formData.message}
+							onChange={handleChange}
+							className="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+							placeholder="Your Message"
+						></textarea>
+					</div>
+					{/* Submit Button */}
+					<div className="text-center">
+						<button
+							type="submit"
+							className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-300"
+						>
+							Send Message
+						</button>
+					</div>
+				</form>
+			</div>
+
+			{/* Popup de Mensagem */}
+			{showPopup && (
+				<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+					<div className="bg-white rounded-lg p-6 max-w-sm mx-auto">
+						<h3
+							className={`text-lg font-semibold mb-4 ${
+								isSuccess ? "text-green-600" : "text-red-600"
+							}`}
+						>
+							{isSuccess ? "Success!" : "Error"}
+						</h3>
+						<p className="text-gray-700 mb-4">{statusMessage}</p>
+						<button
+							onClick={closePopup}
+							className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none transition-colors duration-300"
+						>
+							 Close
+						</button>
+					</div>
+				</div>
+			)}
+		</section>
+	);
+};
+
+export default Contact;

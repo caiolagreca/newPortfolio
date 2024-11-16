@@ -1,10 +1,10 @@
 // src/components/Navbar.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoHomeOutline, IoBookOutline } from "react-icons/io5";
 import { MdOutlinePersonPin } from "react-icons/md";
 import { BsSuitcaseLg } from "react-icons/bs";
 import { FaRegFile, FaLaptopCode, FaMoon } from "react-icons/fa";
-import { FiTool, FiPhone } from "react-icons/fi";
+import { FiTool } from "react-icons/fi";
 import { GrArticle } from "react-icons/gr";
 import { IoMdSunny } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
@@ -31,14 +31,59 @@ const Navbar: React.FC = () => {
 	const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
 	const [light, setLight] = useState<boolean>(true);
 
+	// State to control navbar visibility
+	const [showNavbar, setShowNavbar] = useState<boolean>(true);
+	const [lastScrollY, setLastScrollY] = useState<number>(0);
+
+	const updateLastScrollY = () => {
+		setLastScrollY(window.scrollY);
+	};
+
+	// Handle scroll behavior
+	useEffect(() => {
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+
+			// When scrollY is 0 (top of the page), show navbar
+			if (currentScrollY <= 0) {
+				setShowNavbar(true);
+			} else if (currentScrollY > lastScrollY) {
+				// Scrolling down
+				setShowNavbar(false);
+			} else if (currentScrollY < lastScrollY) {
+				// Scrolling up
+				setShowNavbar(true);
+			}
+
+			setLastScrollY(currentScrollY);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			// Cleanup the event listener on component unmount
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [lastScrollY]);
+
 	return (
 		<nav className="w-full">
-			<div className="hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 backdrop-blur-md rounded-full px-6 py-3 shadow-lg max-w-max items-center justify-center space-x-16 transition-all duration-300 hover:shadow-xl hover:bg-opacity-90 z-50">
+			{/* Desktop Navbar */}
+			<div
+				className={`hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-80 backdrop-blur-md rounded-full px-6 py-3 shadow-lg max-w-max items-center justify-center space-x-16 transition-all duration-500 ease-in-out z-50 ${
+					showNavbar ? "opacity-100" : "opacity-0 -top-20"
+				}`}
+			>
 				{menuItems.map((item, index) => (
-					<NavbarItem key={index} item={item} />
+					<NavbarItem
+						key={index}
+						item={item}
+						updateLastScrollY={updateLastScrollY}
+					/>
 				))}
 			</div>
 
+			{/* Mobile Navbar Toggle Button */}
 			<div className="absolute left-4 top-4 md:hidden ml-4 mt-2">
 				<button
 					onClick={() => setNavbarOpen(!navbarOpen)}
@@ -66,6 +111,7 @@ const Navbar: React.FC = () => {
 				</button>
 			</div>
 
+			{/* Theme Toggle Button */}
 			<div className="fixed right-4 top-5">
 				<button
 					onClick={() => setLight(!light)}
@@ -83,6 +129,7 @@ const Navbar: React.FC = () => {
 				</button>
 			</div>
 
+			{/* Mobile Navbar */}
 			{navbarOpen && (
 				<div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center pt-20">
 					{menuItems.map((item, index) => (

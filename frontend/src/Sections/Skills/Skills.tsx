@@ -72,26 +72,26 @@ const Skills = () => {
 	};
 
 	return (
-		<section id="skills" className="py-10 bg-gray-50">
+		<section id="skills" className="bg-gray-50">
 			<div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
 				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800">
 					Skills
 				</h1>
-				{serverError ? (
-					<p className="text-red-500">{serverError}</p>
-				) : (
-					<div className="space-y-5">
-						{categoryOrder
-							.filter((category) => groupedSkills[category]) // Ensura que somente categorias existentes serão renderizadas
+				<div className="w-full h-full grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2">
+					{serverError ? (
+						<p className="text-red-500">{serverError}</p>
+					) : (
+						categoryOrder
+							.filter((category) => groupedSkills[category])
 							.map((category) => (
 								<div
 									key={category}
-									className="border border-gray-200 rounded-lg p-5 bg-white shadow-sm"
+									className="flex flex-col items-center justify-center p-4 border border-gray-200"
 								>
 									<h2 className="text-xl font-semibold text-gray-700 mb-4">
 										{category}
 									</h2>
-									<div className="flex flex-wrap justify-center gap-20">
+									<div className="flex flex-wrap justify-center gap-2">
 										{groupedSkills[category]
 											.sort(
 												(a, b) =>
@@ -119,9 +119,9 @@ const Skills = () => {
 											))}
 									</div>
 								</div>
-							))}
-					</div>
-				)}
+							))
+					)}
+				</div>
 			</div>
 		</section>
 	);
