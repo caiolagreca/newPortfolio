@@ -11,22 +11,31 @@ import Challenges from "./Sections/Challenges/Challenges";
 import Books from "./Sections/Books/Books";
 import Contact from "./Sections/Contact/Contact";
 import Footer from "./Sections/Fotter/Footer";
+import Divider from "./components/Divider/Divider";
+import ThemeSwitch from "./components/DayNightSwitch/ThemeSwitch";
 
 function App() {
 	return (
 		<>
 			<Navbar />
+			<ThemeSwitch />
 			<Hero />
 			<About />
+			<Divider flip color="rgb(229 231 235)" />
 			<Skills />
+			<Divider color="rgb(229 231 235)" />
 			<ProExp />
 			<FullResume />
 			<Projects />
 			<GithubLink />
 			<Articles />
+			<Divider flip color="rgb(229 231 235)" />
 			<Challenges />
+			<Divider color="rgb(229 231 235)" />
 			<Books />
+			<Divider flip color="rgb(229 231 235)" />
 			<Contact />
+			<Divider color="rgb(229 231 235)" />
 			<Footer />
 		</>
 	);

@@ -48,7 +48,7 @@ const ProExp = () => {
 
 	return (
 		<section id="experience" className="h-screen overflow-hidden bg-gray-50">
-			<div className="max-w-6xl mx-auto h-full flex flex-col py-10">
+			<div className="max-w-5xl mx-auto h-full flex flex-col py-10">
 				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800">
 					Professional Experience
 				</h1>

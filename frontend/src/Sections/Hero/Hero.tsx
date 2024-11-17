@@ -1,25 +1,48 @@
 import React from "react";
 
 const Hero = () => {
+	const handleContactClick = (e: any) => {
+		e.preventDefault();
+		document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+	};
+
 	return (
 		<section
 			id="home"
-			className="h-screen flex flex-col justify-center items-center bg-gray-100 text-center px-6 md:px-0"
+			className="h-screen flex flex-col justify-center items-center bg-gray-200 dark:bg-gray-800 text-center px-6 md:px-0"
 		>
 			<div className="max-w-3xl">
-				<h1 className="text-5xl md:text-7xl font-semibold text-gray-900 leading-tight mb-6 font-serif tracking-wide transition-all duration-500 ease-in-out">
+				<h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight mb-6 font-serif tracking-wide transition-all duration-500 ease-in-out">
 					Caio Lagreca
 				</h1>
-
-				<p className="text-xl md:text-3xl text-gray-600 mb-12 tracking-[0.3em] uppercase">
+				<p className="text-xl md:text-3xl text-gray-600 dark:text-gray-300 mb-12 tracking-[0.3em] uppercase">
 					Software Developer
 				</p>
 				<div>
 					<a
 						href="#contact"
-						className="bg-gradient-to-r from-gray-800 to-gray-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-500 transition-transform duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
+						onClick={handleContactClick}
+						className="relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-indigo-600 rounded-full shadow-md group"
 					>
-						Contact Me
+						<span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-indigo-600 group-hover:translate-x-0 ease">
+							<svg
+								className="w-5 h-5"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+								viewBox="0 0 24 24"
+							>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									d="M17 8l4 4m0 0l-4 4m4-4H3"
+								/>
+							</svg>
+						</span>
+						<span className="absolute flex items-center justify-center w-full h-full text-indigo-600 transition-all duration-300 transform group-hover:translate-x-full ease">
+							Contact Me
+						</span>
+						<span className="relative invisible">Contact Me</span>
 					</a>
 				</div>
 			</div>

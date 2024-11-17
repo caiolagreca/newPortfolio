@@ -63,18 +63,18 @@ const Contact: React.FC = () => {
 	};
 
 	return (
-		<section id="contact" className="py-16 bg-gray-100 relative">
+		<section id="contact" className="py-6 bg-gray-200 relative">
 			<div className="max-w-4xl mx-auto px-6 md:px-8">
-				<h2 className="text-4xl font-bold text-center text-gray-800 mb-4">
+				<h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
 					Get in Touch
 				</h2>
-				<p className="text-center text-gray-600 mb-12">
+				<p className="text-center text-gray-600 mb-6">
 					Have a project in mind or just want to say hi? Feel free to send me a
 					message!
 				</p>
 				<form
 					onSubmit={handleSubmit}
-					className="space-y-6 max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg"
+					className="space-y-4 max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg"
 				>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						{/* Name Input */}
@@ -147,7 +147,7 @@ const Contact: React.FC = () => {
 							name="message"
 							id="message"
 							required
-							rows={6}
+							rows={4}
 							value={formData.message}
 							onChange={handleChange}
 							className="mt-1 p-3 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"

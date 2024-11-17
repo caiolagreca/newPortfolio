@@ -28,7 +28,7 @@ const Articles = () => {
 				{serverError ? (
 					<p className="text-red-500">{serverError}</p>
 				) : (
-					<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+					<div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-3">
 						{articles.map((article) => (
 							<motion.div
 								key={article.title}

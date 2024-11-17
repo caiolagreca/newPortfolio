@@ -52,32 +52,32 @@ const Skills = () => {
 	);
 
 	const colorMap: { [key: string]: string } = {
-		ReactJS: "hover:bg-blue-500",
-		Docker: "hover:bg-blue-600",
-		PHP: "hover:bg-indigo-500",
-		"ASP.NET Core": "hover:bg-purple-600",
-		"React Native": "hover:bg-blue-400",
-		Typescript: "hover:bg-blue-700",
-		"SQL Server": "hover:bg-red-600",
-		PostgreSQL: "hover:bg-blue-800",
-		MongoDB: "hover:bg-green-600",
-		AWS: "hover:bg-yellow-500",
-		Azure: "hover:bg-blue-600",
-		Angular: "hover:bg-red-500",
-		Python: "hover:bg-yellow-600",
-		Linux: "hover:bg-gray-700",
-		NodeJS: "hover:bg-green-700",
-		Wordpress: "hover:bg-blue-900",
-		"C#": "hover:bg-purple-700",
+		ReactJS: "bg-blue-500",
+		Docker: "bg-blue-600",
+		PHP: "bg-indigo-500",
+		"ASP.NET Core": "bg-purple-600",
+		"React Native": "bg-blue-400",
+		Typescript: "bg-blue-700",
+		"SQL Server": "bg-red-600",
+		PostgreSQL: "bg-blue-800",
+		MongoDB: "bg-green-600",
+		AWS: "bg-yellow-500",
+		Azure: "bg-blue-600",
+		Angular: "bg-red-500",
+		Python: "bg-yellow-600",
+		Linux: "bg-gray-700",
+		NodeJS: "bg-green-700",
+		Wordpress: "bg-blue-900",
+		"C#": "bg-purple-700",
 	};
 
 	return (
-		<section id="skills" className="bg-gray-50">
-			<div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
+		<section id="skills" className="bg-gray-200 h-screen">
+			<div className="max-w-5xl mx-auto px-6 md:px-12 text-center flex flex-col justify-center h-full">
 				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800">
 					Skills
 				</h1>
-				<div className="w-full h-full grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2">
+				<div className="w-full h-full grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-6">
 					{serverError ? (
 						<p className="text-red-500">{serverError}</p>
 					) : (
@@ -86,12 +86,12 @@ const Skills = () => {
 							.map((category) => (
 								<div
 									key={category}
-									className="flex flex-col items-center justify-center p-4 border border-gray-200"
+									className="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-md h-full"
 								>
 									<h2 className="text-xl font-semibold text-gray-700 mb-4">
 										{category}
 									</h2>
-									<div className="flex flex-wrap justify-center gap-2">
+									<div className="flex flex-wrap justify-center gap-3">
 										{groupedSkills[category]
 											.sort(
 												(a, b) =>
@@ -101,14 +101,14 @@ const Skills = () => {
 											.map((skill) => (
 												<div
 													key={skill.name}
-													className="flex flex-col items-center transition-transform duration-300 transform hover:scale-105"
+													className="flex flex-col items-center transition-transform duration-300 transform hover:scale-105 mx-5"
 												>
 													<div
-														className={`w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 shadow-md transition-colors duration-300 ${
-															colorMap[skill.name] || "hover:bg-gray-300"
+														className={`w-12 h-12 flex items-center justify-center rounded-full shadow-md transition-colors duration-300 ${
+															colorMap[skill.name]
 														}`}
 													>
-														<div className="text-2xl text-gray-700">
+														<div className="text-2xl text-white">
 															{iconMap[skill.name] && iconMap[skill.name]()}
 														</div>
 													</div>

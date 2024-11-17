@@ -19,7 +19,7 @@ const Challenges = () => {
 	}, []);
 
 	return (
-		<section id="challenges" className="py-16 bg-gray-50">
+		<section id="challenges" className="py-16 bg-gray-200">
 			<div className="max-w-6xl mx-auto px-6 md:px-8 text-center">
 				<h2 className="text-3xl font-semibold text-gray-800 mb-12">
 					LeetCode Challenges
