@@ -19,6 +19,7 @@ const Skills = () => {
 		getSkills();
 	}, []);
 
+	// Order for categories and skills
 	const categoryOrder = [
 		"Programming Language",
 		"Framework",
@@ -37,9 +38,10 @@ const Skills = () => {
 			"Wordpress",
 		],
 		DevOps: ["Docker", "AWS", "Azure", "Linux"],
-		Database: ["SQL Server", "PostgreSQL", "MongoDB"],
+		Database: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB"],
 	};
 
+	// Group skills by category
 	const groupedSkills = skills.reduce(
 		(acc: { [key: string]: Skill[] }, skill) => {
 			if (!acc[skill.category]) {
@@ -51,6 +53,7 @@ const Skills = () => {
 		{}
 	);
 
+	// Color mapping for icons
 	const colorMap: { [key: string]: string } = {
 		ReactJS: "bg-blue-500",
 		Docker: "bg-blue-600",
@@ -60,6 +63,7 @@ const Skills = () => {
 		Typescript: "bg-blue-700",
 		"SQL Server": "bg-red-600",
 		PostgreSQL: "bg-blue-800",
+		MySQL: "bg-orange-500",
 		MongoDB: "bg-green-600",
 		AWS: "bg-yellow-500",
 		Azure: "bg-blue-600",
@@ -72,12 +76,12 @@ const Skills = () => {
 	};
 
 	return (
-		<section id="skills" className="bg-gray-200 h-screen">
-			<div className="max-w-5xl mx-auto px-6 md:px-12 text-center flex flex-col justify-center h-full">
+		<section id="skills" className="bg-gray-200 py-16">
+			<div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
 				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800">
 					Skills
 				</h1>
-				<div className="w-full h-full grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-6">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
 					{serverError ? (
 						<p className="text-red-500">{serverError}</p>
 					) : (
@@ -86,12 +90,12 @@ const Skills = () => {
 							.map((category) => (
 								<div
 									key={category}
-									className="flex flex-col items-center justify-center p-4 rounded-lg bg-white shadow-md h-full"
+									className="flex flex-col items-center justify-start p-6 rounded-lg bg-white shadow-md h-auto"
 								>
 									<h2 className="text-xl font-semibold text-gray-700 mb-4">
 										{category}
 									</h2>
-									<div className="flex flex-wrap justify-center gap-3">
+									<div className="flex justify-center gap-6">
 										{groupedSkills[category]
 											.sort(
 												(a, b) =>
@@ -101,11 +105,11 @@ const Skills = () => {
 											.map((skill) => (
 												<div
 													key={skill.name}
-													className="flex flex-col items-center transition-transform duration-300 transform hover:scale-105 mx-5"
+													className="flex flex-col items-center transition-transform duration-300 transform hover:scale-105"
 												>
 													<div
-														className={`w-12 h-12 flex items-center justify-center rounded-full shadow-md transition-colors duration-300 ${
-															colorMap[skill.name]
+														className={`w-14 h-14 flex items-center justify-center rounded-full shadow-md transition-colors duration-300 ${
+															colorMap[skill.name] || "bg-gray-300"
 														}`}
 													>
 														<div className="text-2xl text-white">

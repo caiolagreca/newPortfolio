@@ -4,6 +4,7 @@ import { getExperienceService } from "../../Services/ExperienceService";
 import { motion, AnimatePresence } from "framer-motion";
 import { parse, format } from "date-fns";
 import { enUS } from "date-fns/locale";
+import { iconMap } from "../../Utils/iconMap";
 
 const ProExp = () => {
 	const [experiences, setExperiences] = useState<Experience[]>([]);
@@ -16,34 +17,29 @@ const ProExp = () => {
 			if (typeof result === "string") {
 				setServerError(result);
 			} else if (Array.isArray(result.data)) {
-				// Sort experiences by most recent startDate
 				const sortedExperiences = result.data.sort((a, b) => {
 					const dateA = parseDateString(a.startDate);
 					const dateB = parseDateString(b.startDate);
 					return (dateB?.getTime() || 0) - (dateA?.getTime() || 0);
 				});
 				setExperiences(sortedExperiences);
-				setActiveIndex(0); // Ensure the most recent is displayed first
+				setActiveIndex(0);
 			}
 		};
 		getExperiences();
 	}, []);
 
-	// Modified parseDateString function
 	const parseDateString = (dateString: string | undefined) => {
 		if (!dateString) return null;
 		const parsedDate = parse(dateString, "dd/MM/yyyy", new Date(), {
 			locale: enUS,
 		});
-		if (isNaN(parsedDate.getTime())) {
-			return null;
-		}
-		return parsedDate;
+		return isNaN(parsedDate.getTime()) ? null : parsedDate;
 	};
 
 	const formatDate = (date: Date | null) => {
 		if (!date) return "";
-		return format(date, "MMM yyyy"); // e.g., "Oct 2022"
+		return format(date, "MMM yyyy");
 	};
 
 	return (
@@ -141,6 +137,37 @@ const ProExp = () => {
 													</li>
 												))}
 										</ul>
+
+										{/* Skills Section */}
+										{experiences[activeIndex].professionalExpSkills.length > 0 && (
+											<div className="mt-6">
+												<h3 className="text-lg font-semibold text-gray-800 mb-3">
+													Skills Used:
+												</h3>
+												<div className="flex flex-wrap gap-4">
+													{experiences[activeIndex].professionalExpSkills.map(
+														(skillItem) => (
+															<div
+																key={skillItem.skillId}
+																className="flex flex-col items-center"
+															>
+																<div
+																	className={`w-12 h-12 flex items-center justify-center rounded-full shadow-md bg-indigo-100`}
+																>
+																	<div className="text-2xl text-indigo-500">
+																		{iconMap[skillItem.skill.name] &&
+																			iconMap[skillItem.skill.name]()}
+																	</div>
+																</div>
+																<p className="mt-2 text-sm font-medium text-gray-600">
+																	{skillItem.skill.name}
+																</p>
+															</div>
+														)
+													)}
+												</div>
+											</div>
+										)}
 									</motion.div>
 								)}
 							</AnimatePresence>

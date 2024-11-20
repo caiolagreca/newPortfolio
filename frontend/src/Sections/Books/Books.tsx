@@ -4,18 +4,20 @@ import { Book } from "../../Types/Book";
 import { getBookService } from "../../Services/BookService";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './Books.css';
-
+import "./Books.css";
 
 const Books = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [errorServer, setErrorServer] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [expandedDescriptions, setExpandedDescriptions] = useState<{
+    [key: number]: boolean;
+  }>({});
 
   useEffect(() => {
     const getBooks = async () => {
       const result = await getBookService();
-      if (typeof result == "string") {
+      if (typeof result === "string") {
         setErrorServer(result);
       } else if (Array.isArray(result.data)) {
         setBooks(result.data);
@@ -24,6 +26,14 @@ const Books = () => {
     };
     getBooks();
   }, []);
+
+  const toggleDescription = (index: number) => {
+    setExpandedDescriptions((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+    console.log(expandedDescriptions)
+  };
 
   if (loading) {
     return (
@@ -72,10 +82,7 @@ const Books = () => {
   };
 
   return (
-    <section
-      id="books"
-      className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-16"
-    >
+    <section id="books" className="py-16 bg-gray-50">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl font-semibold text-gray-800 mb-12">
           Book Recommendations
@@ -99,10 +106,16 @@ const Books = () => {
                     By {book.author}
                   </p>
                   <p className="text-gray-600 dark:text-gray-300 text-xs">
-                    {book.description.length > 100
-                      ? `${book.description.substring(0, 100)}...`
-                      : book.description}
+                    {expandedDescriptions[index]
+                      ? book.description
+                      : `${book.description.substring(0, 100)}...`}
                   </p>
+                  <button
+                    onClick={() => toggleDescription(index)}
+                    className="text-blue-500 hover:text-blue-700 text-sm mt-2"
+                  >
+                    {expandedDescriptions[index] ? "Read Less" : "Read More"}
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,3 +1,5 @@
+import { ProExpSkill } from "./ProExpSkill";
+
 export type Experience = {
 	position: string;
 	company: string;
@@ -7,4 +9,5 @@ export type Experience = {
 	endDate?: string;
 	isCurrent?: boolean;
 	description: string;
+	professionalExpSkills: ProExpSkill[];
 };

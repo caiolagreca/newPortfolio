@@ -18,7 +18,6 @@ function App() {
 	return (
 		<>
 			<Navbar />
-			<ThemeSwitch />
 			<Hero />
 			<About />
 			<Divider flip color="rgb(229 231 235)" />

@@ -18,7 +18,7 @@ import {
 } from "react-icons/si";
 import { AiOutlineDotNet } from "react-icons/ai";
 import { TbBrandReactNative } from "react-icons/tb";
-import { DiMsqlServer } from "react-icons/di";
+import { DiMsqlServer, DiMysql } from "react-icons/di";
 
 export const iconMap: { [key: string]: () => JSX.Element } = {
 	ReactJS: () => <FaReact />,
@@ -29,6 +29,7 @@ export const iconMap: { [key: string]: () => JSX.Element } = {
 	Typescript: () => <SiTypescript />,
 	"SQL Server": () => <DiMsqlServer />,
 	PostgreSQL: () => <SiPostgresql />,
+	MySQL: () => <DiMysql />,
 	MongoDB: () => <SiMongodb />,
 	AWS: () => <FaAws />,
 	Azure: () => <SiMicrosoftazure />,
