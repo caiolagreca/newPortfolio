@@ -41,7 +41,7 @@ const About = () => {
 						<br />
 						<br />
 						When I’m not in front of a computer screen, I try to balance my
-						passion for books of all categories or practice sports such as
+						passion for books and sports such as
 						triathlon and surfing.
 					</p>
 				</motion.div>
