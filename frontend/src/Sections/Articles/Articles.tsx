@@ -83,9 +83,7 @@ const Articles: React.FC = () => {
                         {article.title}
                       </h3>
                       <p className="text-gray-500 text-sm mb-4">
-                        {article.description?.length > 100
-                          ? `${article.description.substring(0, 100)}...`
-                          : article.description ?? "No description"}
+                        {article.description}
                       </p>
                       <a
                         href={article.urlArticle}
@@ -104,7 +102,7 @@ const Articles: React.FC = () => {
             {/* Navigation Arrows */}
             <button
               onClick={handlePrevious}
-              className="absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer duration-200 hover:scale-125 active:scale-100"
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 cursor-pointer duration-200 hover:scale-125 active:scale-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +121,7 @@ const Articles: React.FC = () => {
             </button>
             <button
               onClick={handleNext}
-              className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer duration-200 hover:scale-125 active:scale-100 rotate-180"
+              className="absolute top-1/2 right-0 transform -translate-y-1/2 cursor-pointer duration-200 hover:scale-125 active:scale-100 rotate-180"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

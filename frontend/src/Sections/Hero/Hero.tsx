@@ -12,7 +12,7 @@ const Hero = () => {
 			className="h-screen flex flex-col justify-center items-center bg-gray-200 dark:bg-gray-800 text-center px-6 md:px-0"
 		>
 			<div className="max-w-3xl">
-				<h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight mb-6 font-serif tracking-wide transition-all duration-500 ease-in-out">
+				<h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight mb-6 font-serif tracking-wide">
 					Caio Lagreca
 				</h1>
 				<p className="text-xl md:text-3xl text-gray-600 dark:text-gray-300 mb-12 tracking-[0.3em] uppercase">
@@ -22,7 +22,7 @@ const Hero = () => {
 					<a
 						href="#contact"
 						onClick={handleContactClick}
-						className="relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-indigo-600 rounded-full shadow-md group"
+						className="relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-indigo-600 dark:text-indigo-400 transition duration-300 ease-out border-2 border-indigo-600 dark:border-indigo-400 rounded-full shadow-md group"
 					>
 						<span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-indigo-600 group-hover:translate-x-0 ease">
 							<svg

@@ -76,9 +76,9 @@ const Skills = () => {
 	};
 
 	return (
-		<section id="skills" className="bg-gray-200 py-16">
+		<section id="skills" className="bg-gray-200 dark:bg-gray-800 py-16">
 			<div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
-				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800">
+				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800 dark:text-gray-100">
 					Skills
 				</h1>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
