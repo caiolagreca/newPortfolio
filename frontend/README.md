@@ -12,3 +12,5 @@ npm i dotenv --save
 npm i -D tailwindcss
 npx tailwindcss init
 ```
+
+

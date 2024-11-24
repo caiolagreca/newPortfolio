@@ -1,7 +1,8 @@
 import React from "react";
+import ThemeSwitch from "../../components/DayNightSwitch/ThemeSwitch";
 
 const Hero = () => {
-	const handleContactClick = (e: any) => {
+	const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
 		e.preventDefault();
 		document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 	};
@@ -9,8 +10,13 @@ const Hero = () => {
 	return (
 		<section
 			id="home"
-			className="h-screen flex flex-col justify-center items-center bg-gray-200 dark:bg-gray-800 text-center px-6 md:px-0"
+			className="relative h-screen flex flex-col justify-center items-center bg-gray-200 dark:bg-gray-800 text-center px-6 md:px-0"
 		>
+			{/* Theme Switch positioned at the top right */}
+			<div className="absolute top-4 right-4">
+				<ThemeSwitch />
+			</div>
+
 			<div className="max-w-3xl">
 				<h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight mb-6 font-serif tracking-wide">
 					Caio Lagreca
