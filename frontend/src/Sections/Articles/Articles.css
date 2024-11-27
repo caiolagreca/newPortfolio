@@ -1,0 +1,13 @@
+.slick-dots {
+	margin-top: 50px; /* Espaçamento acima dos dots */
+}
+
+/* Mudar os dots para círculos maiores */
+.slick-dots li button:before {
+	content: "";
+	width: 12px;
+	height: 12px;
+	background-color: #686868;
+	border-radius: 50%;
+	display: block;
+}

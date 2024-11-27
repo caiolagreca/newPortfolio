@@ -12,28 +12,30 @@ import Books from "./Sections/Books/Books";
 import Contact from "./Sections/Contact/Contact";
 import Footer from "./Sections/Footer/Footer";
 import Divider from "./components/Divider/Divider";
+import ThemeSwitch from "./components/DayNightSwitch/ThemeSwitch";
 
 function App() {
 	return (
 		<>
 			<Navbar />
+			<ThemeSwitch />
 			<Hero />
 			<About />
-			<Divider flip color="rgb(229 231 235)" />
+			<Divider flip />
 			<Skills />
-			<Divider color="rgb(229 231 235)" />
+			<Divider />
 			<ProExp />
 			<FullResume />
 			<Projects />
 			<GithubLink />
 			<Articles />
-			<Divider flip color="rgb(229 231 235)" />
+			<Divider flip />
 			<Challenges />
-			<Divider color="rgb(229 231 235)" />
+			<Divider />
 			<Books />
-			<Divider flip color="rgb(229 231 235)" />
+			<Divider flip />
 			<Contact />
-			<Divider color="rgb(229 231 235)" />
+			<Divider />
 			<Footer />
 		</>
 	);

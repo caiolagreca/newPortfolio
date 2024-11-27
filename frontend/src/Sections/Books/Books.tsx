@@ -58,6 +58,7 @@ const Books = () => {
 		speed: 500,
 		slidesToShow: 3,
 		slidesToScroll: 1,
+		arrows: false,
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -75,9 +76,9 @@ const Books = () => {
 	};
 
 	return (
-		<section id="books" className="py-16 bg-gray-50">
+		<section id="books" className="py-16 bg-gray-50 dark:bg-gray-900">
 			<div className="container mx-auto px-6 text-center">
-				<h2 className="text-3xl font-semibold text-gray-800 mb-12">
+				<h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12">
 					Book Recommendations
 				</h2>
 				<Slider {...settings}>

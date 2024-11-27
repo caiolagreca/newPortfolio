@@ -15,16 +15,16 @@ const About = () => {
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.8 }}
 				>
-					<h2 className="text-2xl font-bold text-gray-800 mb-4">
+					<h2 className="text-2xl font-bold text-gray-800 dark:text-gray-300 mb-4">
 						Hey, I’m Caio.
 					</h2>
-					<h3 className="text-lg font-medium text-gray-600 mb-6 text-justify">
+					<h3 className="text-lg font-medium text-gray-600 dark:text-gray-200 mb-6 text-justify">
 						I’m an Innovative Fullstack and Mobile Developer with over 3 years
 						of experience in building scalable and high-performance
 						applications.
 					</h3>
 					<div className="w-20 h-1 bg-indigo-500 mb-6"></div>
-					<p className="text-sm leading-relaxed text-gray-700 text-justify">
+					<p className="text-sm leading-relaxed text-gray-700 dark:text-gray-200 text-justify">
 						In my last year as a Master’s student in Advanced Information
 						Technology, I’m actively enhancing my skills in Cybersecurity and
 						Cloud Computing, while continuously improving my proficiency in .NET
@@ -41,8 +41,7 @@ const About = () => {
 						<br />
 						<br />
 						When I’m not in front of a computer screen, I try to balance my
-						passion for books and sports such as
-						triathlon and surfing.
+						passion for books and sports such as triathlon and surfing.
 					</p>
 				</motion.div>
 				{/* Imagem */}

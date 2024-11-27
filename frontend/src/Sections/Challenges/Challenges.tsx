@@ -19,9 +19,9 @@ const Challenges = () => {
 	}, []);
 
 	return (
-		<section id="challenges" className="py-16 bg-gray-200">
+		<section id="challenges" className="py-16 bg-gray-200 dark:bg-gray-800">
 			<div className="max-w-6xl mx-auto px-6 md:px-8 text-center">
-				<h2 className="text-3xl font-semibold text-gray-800 mb-12">
+				<h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12">
 					LeetCode Challenges
 				</h2>
 				{errorServer ? (
@@ -31,7 +31,7 @@ const Challenges = () => {
 						{challenges.map((challenge, index) => (
 							<div
 								key={index}
-								className="relative bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
+								className="relative bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
 							>
 								{challenge.imageUrl && (
 									<img
@@ -41,10 +41,10 @@ const Challenges = () => {
 									/>
 								)}
 								<div className="p-6">
-									<h3 className="text-xl font-semibold text-gray-800 mb-2">
+									<h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
 										{challenge.title}
 									</h3>
-									<p className="text-gray-500 text-sm mb-4">
+									<p className="text-gray-500 dark:text-gray-300 text-sm mb-4">
 										{challenge.description.length > 100
 											? `${challenge.description.substring(0, 97)}...`
 											: challenge.description}

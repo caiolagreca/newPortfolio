@@ -43,25 +43,42 @@ const ProExp = () => {
 	};
 
 	return (
-		<section id="experience" className="h-screen overflow-hidden bg-gray-50">
-			<div className="max-w-5xl mx-auto h-full flex flex-col py-10">
-				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800">
+		<section
+			id="experience"
+			className="min-h-screen bg-gray-50 dark:bg-gray-900"
+		>
+			<div className="max-w-5xl mx-auto flex flex-col py-10 px-4">
+				<h1 className="text-2xl md:text-3xl font-semibold text-center py-6 text-gray-800 dark:text-gray-100">
 					Professional Experience
 				</h1>
 				{serverError ? (
 					<p className="text-red-500 text-center">{serverError}</p>
 				) : (
-					<div className="flex flex-1 border rounded-lg overflow-hidden shadow-lg mb-5">
+					<div className="flex flex-col md:flex-row border rounded-lg overflow-hidden shadow-lg">
 						{/* Sidebar */}
-						<div className="md:w-1/4 bg-white border-r overflow-y-auto">
-							<ul className="flex md:flex-col overflow-x-auto md:overflow-visible">
+						<div className="block md:hidden mb-4">
+							<select
+								className="w-full px-4 py-3 border rounded-lg text-sm font-medium dark:bg-gray-800 dark:text-gray-100"
+								value={activeIndex}
+								onChange={(e) => setActiveIndex(Number(e.target.value))}
+							>
+								{experiences.map((experience, index) => (
+									<option key={experience.company} value={index}>
+										{experience.company}
+									</option>
+								))}
+							</select>
+						</div>
+
+						<div className="hidden md:block w-full md:w-1/4 bg-white dark:bg-gray-800 border-b md:border-b-0 md:border-r">
+							<ul className="flex flex-col">
 								{experiences.map((experience, index) => (
 									<li key={experience.company}>
 										<button
-											className={`w-full whitespace-nowrap text-left px-4 py-3 text-sm font-medium transition-colors duration-300 ${
+											className={`w-full text-left px-4 py-3 text-sm font-medium transition-colors duration-300 ${
 												index === activeIndex
 													? "text-indigo-600 bg-indigo-50 border-l-4 border-indigo-600"
-													: "text-gray-600 hover:bg-gray-100 border-l-4 border-transparent"
+													: "text-gray-600 dark:text-gray-100 hover:bg-gray-100 border-l-4 border-transparent"
 											}`}
 											onClick={() => setActiveIndex(index)}
 										>
@@ -73,7 +90,7 @@ const ProExp = () => {
 						</div>
 
 						{/* Content Panel */}
-						<div className="md:w-3/4 overflow-y-auto p-6 bg-white">
+						<div className="w-full md:w-3/4 p-4 md:p-6 bg-white dark:bg-gray-800">
 							<AnimatePresence mode="wait">
 								{experiences.length > 0 && experiences[activeIndex] && (
 									<motion.div
@@ -83,7 +100,7 @@ const ProExp = () => {
 										exit={{ opacity: 0, y: -20 }}
 										transition={{ duration: 0.5 }}
 									>
-										<h2 className="text-xl font-semibold text-gray-800 mb-1">
+										<h2 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-100 mb-1">
 											{experiences[activeIndex].position}{" "}
 											{experiences[activeIndex].companyUrl ? (
 												<a
@@ -100,7 +117,7 @@ const ProExp = () => {
 												</span>
 											)}
 										</h2>
-										<p className="text-sm text-gray-500 mb-2">
+										<p className="text-sm text-gray-500 dark:text-gray-200 mb-2">
 											{formatDate(
 												parseDateString(experiences[activeIndex].startDate)
 											)}{" "}
@@ -111,17 +128,17 @@ const ProExp = () => {
 														parseDateString(experiences[activeIndex].endDate)
 												  )}
 										</p>
-										<p className="text-sm text-gray-500 mb-4">
+										<p className="text-sm text-gray-500 dark:text-gray-200 mb-4">
 											{experiences[activeIndex].location}
 										</p>
-										<ul className="list-none space-y-3 pr-4 text-justify">
+										<ul className="list-none space-y-3 pr-2 md:pr-4 text-justify">
 											{experiences[activeIndex].description
 												.split(".")
 												.filter((desc) => desc.trim() !== "")
 												.map((desc, idx) => (
 													<li key={idx} className="flex items-start">
 														<svg
-															className="flex-shrink-0 mr-3 h-4 w-4 text-indigo-500 mt-1"
+															className="flex-shrink-0 mr-2 h-4 w-4 text-indigo-500 mt-1"
 															fill="currentColor"
 															viewBox="0 0 20 20"
 														>
@@ -131,7 +148,7 @@ const ProExp = () => {
 																clipRule="evenodd"
 															/>
 														</svg>
-														<p className="text-sm text-gray-700 leading-relaxed">
+														<p className="text-sm text-gray-700 dark:text-gray-100 leading-relaxed">
 															{desc.trim()}.
 														</p>
 													</li>
@@ -139,9 +156,10 @@ const ProExp = () => {
 										</ul>
 
 										{/* Skills Section */}
-										{experiences[activeIndex].professionalExpSkills.length > 0 && (
+										{experiences[activeIndex].professionalExpSkills.length >
+											0 && (
 											<div className="mt-6">
-												<h3 className="text-lg font-semibold text-gray-800 mb-3">
+												<h3 className="text-base md:text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">
 													Skills Used:
 												</h3>
 												<div className="flex flex-wrap gap-4">
@@ -152,14 +170,14 @@ const ProExp = () => {
 																className="flex flex-col items-center"
 															>
 																<div
-																	className={`w-12 h-12 flex items-center justify-center rounded-full shadow-md bg-indigo-100`}
+																	className={`w-10 md:w-12 h-10 md:h-12 flex items-center justify-center rounded-full shadow-md bg-indigo-100`}
 																>
-																	<div className="text-2xl text-indigo-500">
+																	<div className="text-xl md:text-2xl text-indigo-500">
 																		{iconMap[skillItem.skill.name] &&
 																			iconMap[skillItem.skill.name]()}
 																	</div>
 																</div>
-																<p className="mt-2 text-sm font-medium text-gray-600">
+																<p className="mt-2 text-xs md:text-sm font-medium text-gray-600 dark:text-gray-100">
 																	{skillItem.skill.name}
 																</p>
 															</div>

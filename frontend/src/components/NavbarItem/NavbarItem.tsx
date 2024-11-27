@@ -27,7 +27,7 @@ const NavbarItem: React.FC<INavBarItem> = ({ item, updateLastScrollY }) => {
 			>
 				{item.icon}
 			</a>
-			<div className="absolute left-1/2 transform -translate-x-1/2 translate-y-2 mt-2 px-2 py-1 bg-white text-gray-800 text-sm rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+			<div className="absolute left-1/2 transform -translate-x-1/2 translate-y-2 mt-2 px-2 py-1 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 text-sm rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 				{item.label}
 			</div>
 		</div>

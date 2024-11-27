@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
 		<nav className="w-full">
 			{/* Desktop Navbar */}
 			<div
-				className={`hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 bg-opacity-80 backdrop-blur-md rounded-full px-6 py-3 shadow-lg max-w-max items-center justify-center space-x-16 transition-all duration-500 ease-in-out z-50 ${
+				className={`hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-900 bg-opacity-80 backdrop-blur-md rounded-full px-6 py-3 shadow-lg max-w-max items-center justify-center space-x-16 transition-all duration-500 ease-in-out z-50 ${
 					showNavbar ? "opacity-100" : "opacity-0 -top-20"
 				}`}
 			>
@@ -85,10 +85,13 @@ const Navbar: React.FC = () => {
 			</div>
 
 			{/* Mobile Navbar Toggle Button */}
-			<div className="absolute left-4 top-4 md:hidden ml-4 mt-2">
+			<div className="absolute z-10 left-4 top-4 md:hidden ml-4 mt-2">
 				<button
-					onClick={() => setNavbarOpen(!navbarOpen)}
-					className="text-gray-800 focus:outline-none"
+					onClick={() => {
+						console.log("Toggling navbar:", !navbarOpen);
+						setNavbarOpen(!navbarOpen);
+					}}
+					className="text-gray-800 dark:text-gray-200 focus:outline-none"
 					aria-label="Toggle mobile menu"
 				>
 					{navbarOpen ? (
@@ -114,7 +117,7 @@ const Navbar: React.FC = () => {
 
 			{/* Mobile Navbar */}
 			{navbarOpen && (
-				<div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center pt-20">
+				<div className="md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-40 flex flex-col items-center pt-20">
 					{menuItems.map((item, index) => (
 						<MobileNavbarItem
 							key={index}

@@ -16,6 +16,10 @@
 }
 
 /* Estilo para o dot ativo */
-.slick-dots li.slick-active button:before {
+/* .slick-dots li.slick-active button:before {
 	background-color: #4a5568;
 }
+
+.slick-arrow.slick-next, .slick-arrow.slick-prev {
+	display: none !important;
+} */

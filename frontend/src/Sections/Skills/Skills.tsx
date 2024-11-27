@@ -81,7 +81,7 @@ const Skills = () => {
 				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800 dark:text-gray-100">
 					Skills
 				</h1>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
 					{serverError ? (
 						<p className="text-red-500">{serverError}</p>
 					) : (
@@ -90,12 +90,12 @@ const Skills = () => {
 							.map((category) => (
 								<div
 									key={category}
-									className="flex flex-col items-center justify-start p-6 rounded-lg bg-white shadow-md h-auto"
+									className="flex flex-col items-center justify-start p-6 rounded-lg bg-white dark:bg-gray-900 shadow-md h-auto"
 								>
-									<h2 className="text-xl font-semibold text-gray-700 mb-4">
+									<h2 className="text-xl font-semibold text-gray-700 dark:text-gray-100 mb-4">
 										{category}
 									</h2>
-									<div className="flex justify-center gap-6">
+									<div className="flex flex-wrap md:flex-nowrap justify-center gap-6">
 										{groupedSkills[category]
 											.sort(
 												(a, b) =>
@@ -116,7 +116,7 @@ const Skills = () => {
 															{iconMap[skill.name] && iconMap[skill.name]()}
 														</div>
 													</div>
-													<p className="mt-2 text-sm font-medium text-gray-600">
+													<p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-100">
 														{skill.name}
 													</p>
 												</div>

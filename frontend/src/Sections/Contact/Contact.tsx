@@ -63,25 +63,25 @@ const Contact: React.FC = () => {
 	};
 
 	return (
-		<section id="contact" className="py-6 bg-gray-200 relative">
+		<section id="contact" className="py-6 bg-gray-200 dark:bg-gray-800 relative">
 			<div className="max-w-4xl mx-auto px-6 md:px-8">
-				<h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
+				<h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-4">
 					Get in Touch
 				</h2>
-				<p className="text-center text-gray-600 mb-6">
+				<p className="text-center text-gray-600 dark:text-gray-100 mb-6">
 					Have a project in mind or just want to say hi? Feel free to send me a
 					message!
 				</p>
 				<form
 					onSubmit={handleSubmit}
-					className="space-y-4 max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg"
+					className="space-y-4 max-w-3xl mx-auto bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
 				>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						{/* Name Input */}
 						<div>
 							<label
 								htmlFor="name"
-								className="block text-sm font-medium text-gray-700"
+								className="block text-sm font-medium text-gray-700 dark:text-gray-100"
 							>
 								Name
 							</label>
@@ -100,7 +100,7 @@ const Contact: React.FC = () => {
 						<div>
 							<label
 								htmlFor="email"
-								className="block text-sm font-medium text-gray-700"
+								className="block text-sm font-medium text-gray-700 dark:text-gray-100"
 							>
 								Email
 							</label>
@@ -120,7 +120,7 @@ const Contact: React.FC = () => {
 					<div>
 						<label
 							htmlFor="subject"
-							className="block text-sm font-medium text-gray-700"
+							className="block text-sm font-medium text-gray-700 dark:text-gray-100"
 						>
 							Subject
 						</label>
@@ -139,7 +139,7 @@ const Contact: React.FC = () => {
 					<div>
 						<label
 							htmlFor="message"
-							className="block text-sm font-medium text-gray-700"
+							className="block text-sm font-medium text-gray-700 dark:text-gray-100"
 						>
 							Message
 						</label>
