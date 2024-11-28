@@ -1,14 +1,7 @@
-// src/components/NavbarItem/NavbarItem.tsx
-
 import React from "react";
-import { Item } from "../../Types/Item";
+import { NavBarItem } from "../../Types/NavbarItem";
 
-interface INavBarItem {
-	item: Item;
-	updateLastScrollY: () => void;
-}
-
-const NavbarItem: React.FC<INavBarItem> = ({ item, updateLastScrollY }) => {
+const NavbarItem: React.FC<NavBarItem> = ({ item, updateLastScrollY }) => {
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		e.preventDefault();
 		const targetElement = document.getElementById(item.href.substring(1));
@@ -22,8 +15,8 @@ const NavbarItem: React.FC<INavBarItem> = ({ item, updateLastScrollY }) => {
 		<div className="relative group">
 			<a
 				href={item.href}
-				className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
 				onClick={handleClick}
+				className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
 			>
 				{item.icon}
 			</a>

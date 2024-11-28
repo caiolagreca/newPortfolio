@@ -1,17 +1,7 @@
-// src/components/MobileNavbarItem/MobileNavbarItem.tsx
-
 import React from "react";
-import { Item } from "../../Types/Item";
+import { MobileItem } from "../../Types/MobileItem";
 
-interface IMobileItem {
-	item: Item;
-	setNavbarOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const MobileNavbarItem: React.FC<IMobileItem> = ({
-	item,
-	setNavbarOpen,
-}) => {
+const MobileNavbarItem: React.FC<MobileItem> = ({ item, setNavbarOpen }) => {
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		e.preventDefault();
 		const targetElement = document.getElementById(item.href.substring(1));
@@ -20,7 +10,6 @@ export const MobileNavbarItem: React.FC<IMobileItem> = ({
 			setNavbarOpen(false);
 		}
 	};
-
 	return (
 		<a
 			href={item.href}
@@ -31,3 +20,5 @@ export const MobileNavbarItem: React.FC<IMobileItem> = ({
 		</a>
 	);
 };
+
+export default MobileNavbarItem;
