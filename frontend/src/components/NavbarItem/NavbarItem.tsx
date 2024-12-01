@@ -1,14 +1,11 @@
 import React from "react";
 import { NavBarItem } from "../../Types/NavbarItem";
+import { scrollToElement } from "../../Utils/scrollToElement";
 
-const NavbarItem: React.FC<NavBarItem> = ({ item, updateLastScrollY }) => {
+const NavbarItem: React.FC<NavBarItem> = ({ item }) => {
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		e.preventDefault();
-		const targetElement = document.getElementById(item.href.substring(1));
-		if (targetElement) {
-			targetElement.scrollIntoView({ behavior: "smooth" });
-			updateLastScrollY();
-		}
+		scrollToElement(item.href);
 	};
 
 	return (

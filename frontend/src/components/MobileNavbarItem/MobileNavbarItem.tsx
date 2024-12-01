@@ -1,14 +1,12 @@
 import React from "react";
 import { MobileItem } from "../../Types/MobileItem";
+import { scrollToElement } from "../../Utils/scrollToElement";
 
 const MobileNavbarItem: React.FC<MobileItem> = ({ item, setNavbarOpen }) => {
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		e.preventDefault();
-		const targetElement = document.getElementById(item.href.substring(1));
-		if (targetElement) {
-			targetElement.scrollIntoView({ behavior: "smooth" });
-			setNavbarOpen(false);
-		}
+		scrollToElement(item.href);
+		setNavbarOpen(false);
 	};
 	return (
 		<a

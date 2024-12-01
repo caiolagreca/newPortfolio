@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { menuItems } from "../../Utils/menuItems";
 import NavbarItem from "../NavbarItem/NavbarItem";
 import { AiOutlineClose } from "react-icons/ai";
@@ -7,11 +7,7 @@ import MobileNavbarItem from "../MobileNavbarItem/MobileNavbarItem";
 const Navbar: React.FC = () => {
 	const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
 	const [showNavbar, setShowNavbar] = useState<boolean>(true);
-	const [lastScrollY, setLastScrollY] = useState<number>(0);
-
-	const updateLastScrollY = () => {
-		setLastScrollY(window.scrollY);
-	};
+	const lastScrollY = useRef<number>(0);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -20,22 +16,23 @@ const Navbar: React.FC = () => {
 			// When scrollY is 0 (top of the page), show navbar
 			if (currentScrollY <= 0) {
 				setShowNavbar(true);
-			} else if (currentScrollY > lastScrollY) {
+			} else if (currentScrollY > lastScrollY.current) {
 				// Scrolling down
 				setShowNavbar(false);
-			} else if (currentScrollY < lastScrollY) {
+			} else if (currentScrollY < lastScrollY.current) {
 				// Scrolling up
 				setShowNavbar(true);
 			}
-			setLastScrollY(currentScrollY);
+			lastScrollY.current = currentScrollY;
 		};
+
 		window.addEventListener("scroll", handleScroll);
 
 		return () => {
 			// Cleanup the event listener on component unmount
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, [lastScrollY]);
+	}, []);
 
 	return (
 		<nav className="w-full">
@@ -46,11 +43,7 @@ const Navbar: React.FC = () => {
 				}`}
 			>
 				{menuItems.map((item) => (
-					<NavbarItem
-						key={item.label}
-						item={item}
-						updateLastScrollY={updateLastScrollY}
-					/>
+					<NavbarItem key={item.label} item={item} />
 				))}
 			</div>
 

@@ -1,79 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Skill } from "../../Types/Skill";
-import { getSkillService } from "../../Services/SkillsService";
-import { iconMap } from "../../Utils/iconMap";
+import React from "react";
+import { useSkills } from "../../Hooks/UseSkills";
+import SkillCard from "../../components/Skills/SkillCard";
 
-const Skills = () => {
-	const [skills, setSkills] = useState<Skill[]>([]);
-	const [serverError, setServerError] = useState<string | null>(null);
 
-	useEffect(() => {
-		const getSkills = async () => {
-			const result = await getSkillService();
-			if (typeof result === "string") {
-				setServerError(result);
-			} else if (Array.isArray(result.data)) {
-				setSkills(result.data);
-			}
-		};
-		getSkills();
-	}, []);
-
-	// Order for categories and skills
-	const categoryOrder = [
-		"Programming Language",
-		"Framework",
-		"DevOps",
-		"Database",
-	];
-
-	const skillOrder: { [key: string]: string[] } = {
-		"Programming Language": ["Typescript", "C#", "PHP", "Python"],
-		Framework: [
-			"ReactJS",
-			"ASP.NET Core",
-			"NodeJS",
-			"React Native",
-			"Angular",
-			"Wordpress",
-		],
-		DevOps: ["Docker", "AWS", "Azure", "Linux"],
-		Database: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB"],
-	};
-
-	// Group skills by category
-	const groupedSkills = skills.reduce(
-		(acc: { [key: string]: Skill[] }, skill) => {
-			if (!acc[skill.category]) {
-				acc[skill.category] = [];
-			}
-			acc[skill.category].push(skill);
-			return acc;
-		},
-		{}
-	);
-
-	// Color mapping for icons
-	const colorMap: { [key: string]: string } = {
-		ReactJS: "bg-blue-500",
-		Docker: "bg-blue-600",
-		PHP: "bg-indigo-500",
-		"ASP.NET Core": "bg-purple-600",
-		"React Native": "bg-blue-400",
-		Typescript: "bg-blue-700",
-		"SQL Server": "bg-red-600",
-		PostgreSQL: "bg-blue-800",
-		MySQL: "bg-orange-500",
-		MongoDB: "bg-green-600",
-		AWS: "bg-yellow-500",
-		Azure: "bg-blue-600",
-		Angular: "bg-red-500",
-		Python: "bg-yellow-600",
-		Linux: "bg-gray-700",
-		NodeJS: "bg-green-700",
-		Wordpress: "bg-blue-900",
-		"C#": "bg-purple-700",
-	};
+const Skills: React.FC = () => {
+	const { skillsGrouped, serverError, categoryOrder, skillOrder } = useSkills();
 
 	return (
 		<section id="skills" className="bg-gray-200 dark:bg-gray-800 py-16">
@@ -86,7 +17,7 @@ const Skills = () => {
 						<p className="text-red-500">{serverError}</p>
 					) : (
 						categoryOrder
-							.filter((category) => groupedSkills[category])
+							.filter((category) => skillsGrouped[category])
 							.map((category) => (
 								<div
 									key={category}
@@ -96,30 +27,14 @@ const Skills = () => {
 										{category}
 									</h2>
 									<div className="flex flex-wrap md:flex-nowrap justify-center gap-6">
-										{groupedSkills[category]
+										{skillsGrouped[category]
 											.sort(
 												(a, b) =>
 													skillOrder[category].indexOf(a.name) -
 													skillOrder[category].indexOf(b.name)
 											)
 											.map((skill) => (
-												<div
-													key={skill.name}
-													className="flex flex-col items-center transition-transform duration-300 transform hover:scale-105"
-												>
-													<div
-														className={`w-14 h-14 flex items-center justify-center rounded-full shadow-md transition-colors duration-300 ${
-															colorMap[skill.name] || "bg-gray-300"
-														}`}
-													>
-														<div className="text-2xl text-white">
-															{iconMap[skill.name] && iconMap[skill.name]()}
-														</div>
-													</div>
-													<p className="mt-2 text-sm font-medium text-gray-600 dark:text-gray-100">
-														{skill.name}
-													</p>
-												</div>
+												<SkillCard key={skill.name} skill={skill} />
 											))}
 									</div>
 								</div>
