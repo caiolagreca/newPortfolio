@@ -1,7 +1,6 @@
 import React from "react";
 import { useSkills } from "../../Hooks/UseSkills";
-import SkillCard from "../../components/Skills/SkillCard";
-
+import SkillCard from "../../components/SkillCard/SkillCard";
 
 const Skills: React.FC = () => {
 	const { skillsGrouped, serverError, categoryOrder, skillOrder } = useSkills();

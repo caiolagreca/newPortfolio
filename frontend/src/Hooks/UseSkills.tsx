@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { getSkillService } from "../Services/SkillsService";
 import { Skill } from "../Types/Skill";
 
-
 export const useSkills = () => {
-	const [skillsGrouped, setSkillsGrouped] = useState<{ [key: string]: Skill[] }>(
-		{}
-	);
+	const [skillsGrouped, setSkillsGrouped] = useState<{
+		[key: string]: Skill[];
+	}>({});
 	const [serverError, setServerError] = useState<string | null>(null);
 
 	const categoryOrder = [

@@ -1,10 +1,6 @@
 import React from "react";
-import { Skill } from "../../Types/Skill";
 import { iconMap } from "../../Utils/iconMap";
-
-interface SkillCardProps {
-	skill: Skill;
-}
+import { SkillCardProps } from "../../Types/SkillCardProps";
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
 	const colorMap: { [key: string]: string } = {
