@@ -1,12 +1,5 @@
 import { motion } from "framer-motion";
-import { IconType } from "react-icons"; // Importa o tipo para os ícones
-
-interface LinkButtonProps {
-	href: string;
-	text: string;
-	icon: IconType; // Recebe o ícone como uma propriedade
-	bgColor?: string;
-}
+import { LinkButtonProps } from "../../Types/LinkButtonProps";
 
 const LinkButton: React.FC<LinkButtonProps> = ({
 	href,

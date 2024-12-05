@@ -1,24 +1,48 @@
-// src/Sections/Projects/Projects.tsx
-import React, { useEffect, useState } from "react";
-import { Project } from "../../Types/Project";
-import { getProjectService } from "../../Services/ProjectService";
+import React from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
+import UseProjects from "../../Hooks/UseProjects";
 
 const Projects: React.FC = () => {
-	const [projects, setProjects] = useState<Project[]>([]);
-	const [serverError, setServerError] = useState<string | null>(null);
+	const { projects, serverError, loading } = UseProjects();
 
-	useEffect(() => {
-		const getProjects = async () => {
-			const result = await getProjectService();
-			if (typeof result === "string") {
-				setServerError(result);
-			} else if (Array.isArray(result.data)) {
-				setProjects(result.data.reverse());
-			}
-		};
-		getProjects();
-	}, []);
+	if (loading) {
+		return (
+			<section className="py-16 bg-gray-50 dark:bg-gray-900" id="projects">
+				<div className="container mx-auto px-6">
+					<h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 text-center mb-12">
+						Some Things I’ve Built
+					</h2>
+					<p className="text-gray-500 text-center">Loading...</p>
+				</div>
+			</section>
+		);
+	}
+
+	if (serverError) {
+		return (
+			<section className="py-16 bg-gray-50 dark:bg-gray-900" id="projects">
+				<div className="container mx-auto px-6">
+					<h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 text-center mb-12">
+						Some Things I’ve Built
+					</h2>
+					<p className="text-red-500 text-center">{serverError}</p>
+				</div>
+			</section>
+		);
+	}
+
+	if (projects.length === 0) {
+		return (
+			<section className="py-16 bg-gray-50 dark:bg-gray-900" id="projects">
+				<div className="container mx-auto px-6">
+					<h2 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 text-center mb-12">
+						Some Things I’ve Built
+					</h2>
+					<p className="text-gray-500 text-center">No projects found.</p>
+				</div>
+			</section>
+		);
+	}
 
 	return (
 		<section className="py-16 bg-gray-50 dark:bg-gray-900" id="projects">
@@ -35,7 +59,7 @@ const Projects: React.FC = () => {
 							imageUrl={project.imageUrl}
 							liveDemoUrl={project.urlWebsite}
 							sourceCodeUrl={project.urlRepository}
-							reverse={index % 2 === 1} // Alternate layout
+							reverse={index % 2 === 1}
 							skills={project.projectSkills}
 						/>
 					))}

@@ -1,17 +1,8 @@
 // src/components/ProjectCard/ProjectCard.tsx
 import React from "react";
-import { ProjectSkill } from "../../Types/ProjectSkill";
 import { iconMap } from "../../Utils/iconMap"; // Ensure this map contains all skill icons
+import { ProjectCardProps } from "../../Types/ProjectCardsProps";
 
-interface ProjectCardProps {
-	title: string;
-	description: string;
-	imageUrl: string;
-	liveDemoUrl?: string;
-	sourceCodeUrl: string;
-	reverse?: boolean;
-	skills: ProjectSkill[];
-}
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
 	title,

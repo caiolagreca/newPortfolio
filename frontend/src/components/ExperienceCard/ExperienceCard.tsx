@@ -32,7 +32,7 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ experience }) => {
 							{experience.companyUrl ? (
 								<a
 									href={experience.companyUrl}
-									target="_blank"
+									target="_blank" 
 									rel="noopener noreferrer"
 									className="text-indigo-600 hover:underline"
 								>
