@@ -5,34 +5,11 @@ import { getBookService } from "../../Services/BookService";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Books.css";
+import useBooks from "../../Hooks/useBooks";
+import BookCard from "../../components/BookCard/BookCard";
 
 const Books = () => {
-	const [books, setBooks] = useState<Book[]>([]);
-	const [errorServer, setErrorServer] = useState<string | null>(null);
-	const [loading, setLoading] = useState<boolean>(true);
-	const [expandedDescriptions, setExpandedDescriptions] = useState<{
-		[key: number]: boolean;
-	}>({});
-
-	useEffect(() => {
-		const getBooks = async () => {
-			const result = await getBookService();
-			if (typeof result === "string") {
-				setErrorServer(result);
-			} else if (Array.isArray(result.data)) {
-				setBooks(result.data);
-			}
-			setLoading(false);
-		};
-		getBooks();
-	}, []);
-
-	const toggleDescription = (index: number) => {
-		setExpandedDescriptions((prev) => ({
-			...prev,
-			[index]: !prev[index],
-		}));
-	};
+	const { books, errorServer, loading } = useBooks();
 
 	if (loading) {
 		return (
@@ -83,34 +60,12 @@ const Books = () => {
 				</h2>
 				<Slider {...settings}>
 					{books.map((book, index) => (
-						<div key={index} className="px-2">
-							<div
-								className="relative w-full h-80 bg-cover bg-center rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 filter grayscale mb-2"
-								style={{ backgroundImage: `url(${book.imageUrl})` }}
-							>
-								{/* Overlay */}
-								<div className="absolute inset-0 bg-black opacity-90"></div>
-
-								{/* Content */}
-								<div className="relative p-6 h-full flex flex-col justify-end">
-									<h3 className="text-xl font-semibold text-white mb-1">
-										{book.title}
-									</h3>
-									<p className="text-white mb-2 text-base">By {book.author}</p>
-									<p className="text-white text-sm">
-										{expandedDescriptions[index]
-											? book.description
-											: `${book.description.substring(0, 100)}...`}
-									</p>
-									<button
-										onClick={() => toggleDescription(index)}
-										className="mt-4 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-									>
-										{expandedDescriptions[index] ? "Read Less" : "Read More"}
-									</button>
-								</div>
-							</div>
-						</div>
+						<BookCard
+							title={book.title}
+							author={book.author}
+							imageUrl={book.imageUrl}
+							description={book.description}
+						/>
 					))}
 				</Slider>
 			</div>

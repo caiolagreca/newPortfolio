@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { Project } from "../Types/Project";
 import { getProjectService } from "../Services/ProjectService";
 
-const UseProjects = (): {
-	projects: Project[];
-	serverError: string | null;
-	loading: boolean;
-} => {
+const UseProjects = () => {
 	const [projects, setProjects] = useState<Project[]>([]);
 	const [serverError, setServerError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(true);
@@ -23,7 +19,7 @@ const UseProjects = (): {
 			} catch (err) {
 				setServerError("Failed to fetch projects.");
 			} finally {
-        setLoading(false);
+				setLoading(false);
 			}
 		};
 		getProjects();

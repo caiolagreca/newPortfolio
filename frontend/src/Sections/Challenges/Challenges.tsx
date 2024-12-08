@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Challenge } from "../../Types/Challenge";
-import { getChallengeService } from "../../Services/ChallengeService";
+import React from "react";
+import useChallenges from "../../Hooks/useChallenges";
+import ChallengeCard from "../../components/ChallengeCard/ChallengeCard";
 
 const Challenges = () => {
-	const [challenges, setChallenges] = useState<Challenge[]>([]);
-	const [errorServer, setErrorServer] = useState<string | null>(null);
-
-	useEffect(() => {
-		const getChallenges = async () => {
-			const result = await getChallengeService();
-			if (typeof result === "string") {
-				setErrorServer(result);
-			} else if (Array.isArray(result.data)) {
-				setChallenges(result.data);
-			}
-		};
-		getChallenges();
-	}, []);
+	const { challenges, errorServer, loading } = useChallenges();
+	if (loading) {
+		return (
+			<div className="flex items-center justify-center h-screen">
+				<p className="text-gray-600 text-lg animate-pulse">
+					Loading Articles...
+				</p>
+			</div>
+		);
+	}
 
 	return (
 		<section id="challenges" className="py-16 bg-gray-200 dark:bg-gray-800">
@@ -28,37 +24,14 @@ const Challenges = () => {
 					<p className="text-red-500">{errorServer}</p>
 				) : (
 					<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-						{challenges.map((challenge, index) => (
-							<div
-								key={index}
-								className="relative bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
-							>
-								{challenge.imageUrl && (
-									<img
-										src={challenge.imageUrl}
-										alt={challenge.title}
-										className="w-full h-48 object-cover"
-									/>
-								)}
-								<div className="p-6">
-									<h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
-										{challenge.title}
-									</h3>
-									<p className="text-gray-500 dark:text-gray-300 text-sm mb-4">
-										{challenge.description.length > 100
-											? `${challenge.description.substring(0, 97)}...`
-											: challenge.description}
-									</p>
-									<a
-										href={challenge.linkGithub}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="inline-block bg-indigo-600 text-white px-4 py-2 rounded-full font-medium shadow-md hover:bg-indigo-700 transition-colors duration-300"
-									>
-										View Code on GitHub
-									</a>
-								</div>
-							</div>
+						{challenges.map((challenge) => (
+							<ChallengeCard
+								key={challenge.title}
+								imageUrl={challenge.imageUrl}
+								title={challenge.title}
+								description={challenge.description}
+								linkGithub={challenge.linkGithub}
+							/>
 						))}
 					</div>
 				)}

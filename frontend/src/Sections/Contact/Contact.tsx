@@ -1,69 +1,23 @@
-import React, { useState } from "react";
-import emailjs from "emailjs-com";
-
-// IDs do EmailJS - certifique-se de que estão definidos corretamente
-const serviceID = process.env.REACT_APP_YOUR_SERVICE_ID;
-const templateID = process.env.REACT_APP_YOUR_TEMPLATE_ID;
-const publicKey = process.env.REACT_APP_YOUR_PUBLIC_KEY;
+import React from "react";
+import useContact from "../../Hooks/useContact";
 
 const Contact: React.FC = () => {
-	const [formData, setFormData] = useState({
-		name: "",
-		email: "",
-		subject: "",
-		message: "",
-	});
-
-	const [statusMessage, setStatusMessage] = useState<string | null>(null);
-	const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
-	const [showPopup, setShowPopup] = useState<boolean>(false);
-
-	// Handle form input changes
-	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
-	};
-
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault();
-
-		emailjs
-			.send(`${serviceID}`, `${templateID}`, formData, `${publicKey}`)
-			.then(
-				(result) => {
-					console.log("Email sent:", result.text);
-					setStatusMessage("Your email was sent successfully!");
-					setIsSuccess(true);
-					setShowPopup(true);
-					// Reset form fields
-					setFormData({
-						name: "",
-						email: "",
-						subject: "",
-						message: "",
-					});
-				},
-				(error) => {
-					console.error("Email error:", error.text);
-					setStatusMessage(
-						"Sorry, something got wrong. Try again in a few seconds."
-					);
-					setIsSuccess(false);
-					setShowPopup(true);
-				}
-			);
-	};
-
-	// Função para fechar o popup
-	const closePopup = () => {
-		setShowPopup(false);
-		setStatusMessage(null);
-		setIsSuccess(null);
-	};
+	const {
+		formData,
+		handleChange,
+		handleSubmit,
+		statusMessage,
+		isSuccess,
+		showPopup,
+		closePopup,
+		loading,
+	} = useContact();
 
 	return (
-		<section id="contact" className="py-6 bg-gray-200 dark:bg-gray-800 relative">
+		<section
+			id="contact"
+			className="py-6 bg-gray-200 dark:bg-gray-800 relative"
+		>
 			<div className="max-w-4xl mx-auto px-6 md:px-8">
 				<h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-4">
 					Get in Touch
@@ -182,7 +136,7 @@ const Contact: React.FC = () => {
 							onClick={closePopup}
 							className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none transition-colors duration-300"
 						>
-							 Close
+							Close
 						</button>
 					</div>
 				</div>

@@ -28,7 +28,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 				<h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
 					{title}
 				</h3>
-				<p className="text-gray-600 dark:text-gray-100 mb-4">{description}</p>
+				<p className="text-justify text-gray-600 dark:text-gray-100 mb-4">{description}</p>
 
 				{/* Skills Section */}
 				{skills && skills.length > 0 && (
