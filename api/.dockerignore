@@ -1,0 +1,12 @@
+# Ignore pasta com binários e resultados de build
+bin
+obj
+
+# Ignore arquivos temporários
+*.log
+*.temp
+
+# Se houver diretórios de dependências ou outros desnecessários
+node_modules
+.vs
+*.user
