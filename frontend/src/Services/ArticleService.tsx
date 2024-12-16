@@ -4,7 +4,7 @@ import { Article } from "../Types/Article";
 export const getArticleService = async () => {
 	try {
 		const response = await axios.get<Article[]>(
-			"http://localhost:5058/api/Article"
+			"https://newportfolio-ypn3.onrender.com/api/Article"
 		);
 		return response;
 	} catch (error) {

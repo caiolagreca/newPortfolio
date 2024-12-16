@@ -3,7 +3,7 @@ import { Book } from "../Types/Book";
 
 export const getBookService = async () => {
 	try {
-		const response = await axios.get<Book[]>("http://localhost:5058/api/Book");
+		const response = await axios.get<Book[]>("https://newportfolio-ypn3.onrender.com/api/Book");
 		return response;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {
