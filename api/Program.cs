@@ -24,7 +24,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader());
+    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("https://newportfolio-ypn3.onrender.com").AllowAnyMethod().AllowAnyHeader());
 
 });
 
