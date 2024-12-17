@@ -4,7 +4,7 @@ import { Challenge } from "../Types/Challenge";
 export const getChallengeService = async () => {
 	try {
 		const response = await axios.get<Challenge[]>(
-			"http://localhost:5058/api/Challenge"
+			"https://newportfolio-ypn3.onrender.com/api/Challenge"
 		);
 		return response;
 	} catch (error) {

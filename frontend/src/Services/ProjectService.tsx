@@ -4,7 +4,7 @@ import { Project } from "../Types/Project";
 export const getProjectService = async () => {
 	try {
 		const response = await axios.get<Project[]>(
-			"http://localhost:5058/api/Project"
+			"https://newportfolio-ypn3.onrender.com/api/Project"
 		);
 		return response;
 	} catch (error) {

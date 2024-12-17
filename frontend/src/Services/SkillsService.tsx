@@ -4,7 +4,7 @@ import { Skill } from "../Types/Skill";
 export const getSkillService = async () => {
 	try {
 		const response = await axios.get<Skill[]>(
-			'http://localhost:5058/api/Skill'
+			'https://newportfolio-ypn3.onrender.com/api/Skill'
 		);
 		return response;
 	} catch (error) {

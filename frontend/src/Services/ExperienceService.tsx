@@ -4,7 +4,7 @@ import { Experience } from "../Types/Experience";
 export const getExperienceService = async () => {
 	try {
 		const response = await axios.get<Experience[]>(
-			"http://localhost:5058/api/proExp"
+			"https://newportfolio-ypn3.onrender.com/api/proExp"
 		);
 		return response;
 	} catch (error) {
