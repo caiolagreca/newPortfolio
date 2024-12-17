@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using api.data;
 using api.Interfaces;
 using api.Models;
@@ -23,7 +24,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("https://newportfolio-ypn3.onrender.com", "https://new-portfolio-sigma-ebon.vercel.app").AllowAnyMethod().AllowAnyHeader());
+    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("http://localhost:3000", "https://new-portfolio-sigma-ebon.vercel.app").AllowAnyMethod().AllowAnyHeader());
 
 });
 
