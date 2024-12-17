@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using api.data;
 using api.Interfaces;
 using api.Models;
@@ -24,7 +23,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("https://newportfolio-ypn3.onrender.com").AllowAnyMethod().AllowAnyHeader());
+    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("https://newportfolio-ypn3.onrender.com", "https://new-portfolio-sigma-ebon.vercel.app").AllowAnyMethod().AllowAnyHeader());
 
 });
 
@@ -40,9 +39,6 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UseHttpsRedirection();
-
-app.MapControllers();
-
 app.UseCors("AllowFrontend");
-
+app.MapControllers();
 app.Run();
