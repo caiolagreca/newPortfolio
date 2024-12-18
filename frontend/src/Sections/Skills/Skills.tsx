@@ -14,15 +14,15 @@ const Skills: React.FC = () => {
 					Skills
 				</h1>
 
-				<div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
-					{loading ? (
-						<div className="flex flex-col items-center gap-4">
-							<SkeletonLoader count={3} height={20} width={300} />
-						</div>
-					) : serverError ? (
-						<p className="text-red-500">{serverError}</p>
-					) : (
-						categoryOrder
+				{loading ? (
+					<div className="flex flex-col items-center justify-center gap-4 min-h-[200px] w-full">
+						<SkeletonLoader count={3} height={20} width={300} />
+					</div>
+				) : serverError ? (
+					<p className="text-red-500">{serverError}</p>
+				) : (
+					<div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
+						{categoryOrder
 							.filter((category) => skillsGrouped[category])
 							.map((category) => (
 								<div
@@ -44,9 +44,9 @@ const Skills: React.FC = () => {
 											))}
 									</div>
 								</div>
-							))
-					)}
-				</div>
+							))}
+					</div>
+				)}
 			</div>
 		</section>
 	);

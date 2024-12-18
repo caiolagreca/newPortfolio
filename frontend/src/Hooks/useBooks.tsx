@@ -14,8 +14,8 @@ const useBooks = () => {
 				setErrorServer(result);
 			} else if (Array.isArray(result.data)) {
 				setBooks(result.data);
+				setLoading(false);
 			}
-			setLoading(false);
 		};
 		getBooks();
 	}, []);
