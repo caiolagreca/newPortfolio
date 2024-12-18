@@ -1,9 +1,11 @@
 import React from "react";
 import { useSkills } from "../../Hooks/UseSkills";
 import SkillCard from "../../components/SkillCard/SkillCard";
+import SkeletonLoader from "../../components/SkeletonLoader/SkeletonLoader";
 
 const Skills: React.FC = () => {
-	const { skillsGrouped, serverError, categoryOrder, skillOrder } = useSkills();
+	const { skillsGrouped, serverError, categoryOrder, skillOrder, loading } =
+		useSkills();
 
 	return (
 		<section id="skills" className="bg-gray-200 dark:bg-gray-800 py-16">
@@ -11,8 +13,13 @@ const Skills: React.FC = () => {
 				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800 dark:text-gray-100">
 					Skills
 				</h1>
+
 				<div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
-					{serverError ? (
+					{loading ? (
+						<div className="flex flex-col items-center gap-4">
+							<SkeletonLoader count={3} height={20} width={300} />
+						</div>
+					) : serverError ? (
 						<p className="text-red-500">{serverError}</p>
 					) : (
 						categoryOrder

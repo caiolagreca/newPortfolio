@@ -7,6 +7,7 @@ export const useSkills = () => {
 		[key: string]: Skill[];
 	}>({});
 	const [serverError, setServerError] = useState<string | null>(null);
+	const [loading, setLoading] = useState(true);
 
 	const categoryOrder = [
 		"Programming Language",
@@ -47,10 +48,11 @@ export const useSkills = () => {
 					{}
 				);
 				setSkillsGrouped(grouped);
+				setLoading(false);
 			}
 		};
 		getSkills();
 	}, []);
 
-	return { skillsGrouped, serverError, categoryOrder, skillOrder };
+	return { skillsGrouped, serverError, categoryOrder, skillOrder, loading };
 };
