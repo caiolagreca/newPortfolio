@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Project } from "../Types/Project";
 import { getProjectService } from "../Services/ProjectService";
 
@@ -6,26 +6,46 @@ const UseProjects = () => {
 	const [projects, setProjects] = useState<Project[]>([]);
 	const [serverError, setServerError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(true);
+	const [hasFetched, setHasFetched] = useState(false);
+
+	const containerRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		const getProjects = async () => {
-			try {
-				const result = await getProjectService();
-				if (typeof result === "string") {
-					setServerError(result);
-				} else if (Array.isArray(result.data)) {
-					setProjects(result.data.reverse());
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting && !hasFetched) {
+					setHasFetched(true);
+					setLoading(true);
+
+					getProjectService()
+						.then((result) => {
+							if (typeof result === "string") {
+								setServerError(result);
+								setLoading(false);
+							} else if (Array.isArray(result.data)) {
+								setProjects(result.data.reverse());
+								setLoading(false);
+							}
+						})
+						.catch((err) => {
+							setServerError(`Error fetching Skills: ${err}`);
+							setLoading(false);
+						});
 				}
-			} catch (err) {
-				setServerError("Failed to fetch projects.");
-			} finally {
-				setLoading(false);
+			});
+		});
+		if (containerRef.current) {
+			observer.observe(containerRef.current);
+		}
+
+		return () => {
+			if (containerRef.current) {
+				observer.unobserve(containerRef.current);
 			}
 		};
-		getProjects();
-	}, []);
+	}, [hasFetched]);
 
-	return { projects, serverError, loading };
+	return { projects, serverError, loading, containerRef };
 };
 
 export default UseProjects;

@@ -3,12 +3,13 @@ import ExperienceCard from "../../components/ExperienceCard/ExperienceCard";
 import { useState } from "react";
 
 const ProExp = () => {
-	const { experiences, serverError } = UseExperience();
+	const { experiences, serverError, containerRef } = UseExperience();
 	const [activeIndex, setActiveIndex] = useState<number>(0);
 
 	return (
 		<section
 			id="experience"
+			ref={containerRef}
 			className="min-h-screen bg-gray-50 dark:bg-gray-900"
 		>
 			<div className="max-w-5xl mx-auto flex flex-col py-10 px-4">
@@ -53,7 +54,6 @@ const ProExp = () => {
 								))}
 							</ul>
 						</div>
-
 						{/* Content Panel */}
 						<ExperienceCard experience={experiences[activeIndex]} />
 					</div>

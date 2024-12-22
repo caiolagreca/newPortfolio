@@ -1,6 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getSkillService } from "../Services/SkillsService";
 import { Skill } from "../Types/Skill";
+
+function groupSkillsByCategorie(data: Skill[]) {
+	return data.reduce((acc: { [key: string]: Skill[] }, skill: Skill) => {
+		if (!acc[skill.category]) {
+			acc[skill.category] = [];
+		}
+		acc[skill.category].push(skill);
+		return acc;
+	}, {});
+}
 
 export const useSkills = () => {
 	const [skillsGrouped, setSkillsGrouped] = useState<{
@@ -8,6 +18,9 @@ export const useSkills = () => {
 	}>({});
 	const [serverError, setServerError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(true);
+	const [hasFetched, setHasFetched] = useState(false);
+
+	const containerRef = useRef<HTMLElement>(null);
 
 	const categoryOrder = [
 		"Programming Language",
@@ -31,28 +44,49 @@ export const useSkills = () => {
 	};
 
 	useEffect(() => {
-		const getSkills = async () => {
-			const result = await getSkillService();
-			if (typeof result === "string") {
-				setServerError(result);
-			} else if (Array.isArray(result.data)) {
-				// Group skills by category
-				const grouped = result.data.reduce(
-					(acc: { [key: string]: Skill[] }, skill) => {
-						if (!acc[skill.category]) {
-							acc[skill.category] = [];
-						}
-						acc[skill.category].push(skill);
-						return acc;
-					},
-					{}
-				);
-				setSkillsGrouped(grouped);
-				setLoading(false);
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting && !hasFetched) {
+					setHasFetched(true);
+					setLoading(true);
+
+					getSkillService()
+						.then((result) => {
+							if (typeof result == "string") {
+								setServerError(result);
+								setLoading(false);
+							} else if (Array.isArray(result.data)) {
+								const grouped = groupSkillsByCategorie(result.data);
+								setSkillsGrouped(grouped);
+								setLoading(false);
+							}
+						})
+						.catch((err) => {
+							setServerError(`Error fetching Skills: ${err}`);
+							setLoading(false);
+						});
+				}
+			});
+		});
+
+		if (containerRef.current) {
+			observer.observe(containerRef.current);
+		}
+
+		return () => {
+			if (containerRef.current) {
+				observer.unobserve(containerRef.current);
 			}
 		};
-		getSkills();
-	}, []);
+	}, [hasFetched]);
 
-	return { skillsGrouped, serverError, categoryOrder, skillOrder, loading };
+	return {
+		skillsGrouped,
+		serverError,
+		categoryOrder,
+		skillOrder,
+		loading,
+		containerRef,
+		hasFetched,
+	};
 };

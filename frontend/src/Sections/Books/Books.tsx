@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { Book } from "../../Types/Book";
-import { getBookService } from "../../Services/BookService";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Books.css";
@@ -49,7 +46,7 @@ const Books = () => {
 					<p className="text-red-500">{errorServer}</p>
 				) : (
 					<Slider {...settings}>
-						{books.map((book, index) => (
+						{books.map((book) => (
 							<BookCard
 								title={book.title}
 								author={book.author}

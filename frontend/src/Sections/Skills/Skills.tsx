@@ -4,11 +4,21 @@ import SkillCard from "../../components/SkillCard/SkillCard";
 import SkeletonLoader from "../../components/SkeletonLoader/SkeletonLoader";
 
 const Skills: React.FC = () => {
-	const { skillsGrouped, serverError, categoryOrder, skillOrder, loading } =
-		useSkills();
+	const {
+		skillsGrouped,
+		serverError,
+		categoryOrder,
+		skillOrder,
+		loading,
+		containerRef,
+	} = useSkills();
 
 	return (
-		<section id="skills" className="bg-gray-200 dark:bg-gray-800 py-16">
+		<section
+			id="skills"
+			ref={containerRef}
+			className="bg-gray-200 dark:bg-gray-800 py-16"
+		>
 			<div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
 				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800 dark:text-gray-100">
 					Skills
