@@ -1,0 +1,198 @@
+[
+  {
+    "id": 1,
+    "position": "Front End Developer",
+    "company": "WedDigital",
+    "companyUrl": "https://weddigital.com.br/",
+    "location": "Brazil",
+    "startDate": "01/06/2022",
+    "endDate": "30/10/2022",
+    "isCurrent": false,
+    "description": "Contributed to a 30% increase in user engagement metrics by developing and deploying multiple web applications utilizing React and Redux, which enhanced application stability and interactivity. Reduced bug rates by over 50% post-launch by producing high-quality, maintainable code across all development stages, supported by rigorous code reviews and comprehensive testing procedures. Reduced setup and deployment times by efficiently managing containers with Docker Compose, creating consistent and isolated development environments that facilitated replication across machines. Enhanced user satisfaction levels by optimizing the product design process through effective communication between clients and the UI/UX design team.",
+    "professionalExpSkills": [
+      {
+        "skillId": 1,
+        "skill": {
+          "id": 1,
+          "name": "ReactJS",
+          "category": "Framework"
+        },
+        "professionalExperienceId": 1
+      },
+      {
+        "skillId": 2,
+        "skill": {
+          "id": 2,
+          "name": "Docker",
+          "category": "DevOps"
+        },
+        "professionalExperienceId": 1
+      },
+      {
+        "skillId": 9,
+        "skill": {
+          "id": 9,
+          "name": "MongoDB",
+          "category": "Database"
+        },
+        "professionalExperienceId": 1
+      },
+      {
+        "skillId": 10,
+        "skill": {
+          "id": 10,
+          "name": "AWS",
+          "category": "DevOps"
+        },
+        "professionalExperienceId": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "position": "Full Stack Developer",
+    "company": "Tecomat Engenharia",
+    "companyUrl": "https://tecomat.com.br/",
+    "location": "Brazil",
+    "startDate": "01/10/2022",
+    "endDate": "30/07/2023",
+    "isCurrent": false,
+    "description": "Improved application responsiveness and user engagement by 40% by leading the rapid development and deployment of over 20 new features using React.JS, Node.JS, MongoDB, and AWS, based on MVC architecture and Agile Scrum methodologies. Designed and implemented more than 15 RESTful APIs that streamlined backend processes and improved overall system responsiveness. By thoughtfully shaping data flows and error handling, contributed to a more reliable environment where the team could confidently build new functionality. Configured and maintained AWS EC2 instances and Elastic Load Balancers, ensuring high availability and the ability to handle sudden increases in web traffic. Utilized AWS CloudFormation to automate scaling and resource provisioning, resulting in a more resilient and adaptable infrastructure. Decreased bug rates and improved team proficiency by undertaking comprehensive refactoring of the existing codebase using SOLID principles and clean code practices, alongside providing regular code reviews.",
+    "professionalExpSkills": [
+      {
+        "skillId": 1,
+        "skill": {
+          "id": 1,
+          "name": "ReactJS",
+          "category": "Framework"
+        },
+        "professionalExperienceId": 2
+      },
+      {
+        "skillId": 2,
+        "skill": {
+          "id": 2,
+          "name": "Docker",
+          "category": "DevOps"
+        },
+        "professionalExperienceId": 2
+      },
+      {
+        "skillId": 9,
+        "skill": {
+          "id": 9,
+          "name": "MongoDB",
+          "category": "Database"
+        },
+        "professionalExperienceId": 2
+      },
+      {
+        "skillId": 10,
+        "skill": {
+          "id": 10,
+          "name": "AWS",
+          "category": "DevOps"
+        },
+        "professionalExperienceId": 2
+      },
+      {
+        "skillId": 15,
+        "skill": {
+          "id": 15,
+          "name": "NodeJS",
+          "category": "Framework"
+        },
+        "professionalExperienceId": 2
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "position": "Full Stack Developer",
+    "company": "Jade Finance Australia",
+    "companyUrl": "https://jade.finance/?adgroupid=138647105999&keyword=jade%20finance&gad_source=1&gclid=Cj0KCQiAlsy5BhDeARIsABRc6ZsI4fsCc7QbcxXLmo-bZfzFcxmrdtnXAgzN5Vbjvm_-YIsnCb6_FNIaAmsKEALw_wcB",
+    "location": "Australia",
+    "startDate": "01/07/2023",
+    "endDate": "30/01/2024",
+    "isCurrent": false,
+    "description": "Enhanced site performance and user experience by developing and maintaining dynamic webpages using PHP, WordPress, and MySQL, resulting in a 30% increase in user retention and reducing page load times. Improved application response times and backend efficiency by managing web development projects focusing on middleware and API connectivity, which streamlined data exchange processes by 40% and increased backend efficiency. Increased customer satisfaction scores by collaborating with stakeholders to refine technical requirements and implement feedback effectively, enhancing functional specifications and user interfaces. Reduced potential bugs and improved code quality by implementing backend functionalities for robust data storage and actively maintaining and documenting the existing codebase.",
+    "professionalExpSkills": [
+      {
+        "skillId": 3,
+        "skill": {
+          "id": 3,
+          "name": "PHP",
+          "category": "Programming Language"
+        },
+        "professionalExperienceId": 3
+      },
+      {
+        "skillId": 17,
+        "skill": {
+          "id": 17,
+          "name": "Wordpress",
+          "category": "Framework"
+        },
+        "professionalExperienceId": 3
+      },
+      {
+        "skillId": 20,
+        "skill": {
+          "id": 20,
+          "name": "MySQL",
+          "category": "Database"
+        },
+        "professionalExperienceId": 3
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "position": "Mobile Application Developer",
+    "company": "InnovateX",
+    "companyUrl": "",
+    "location": "Brazil - Remote",
+    "startDate": "01/03/2024",
+    "endDate": "30/07/2024",
+    "isCurrent": false,
+    "description": "Enhanced user engagement by developing mobile applications with React Native/Typescript, creating intuitive interfaces and efficient APIs, which significantly improved the user experience. Ensured seamless data synchronization and secure management by engineering backend services with NodeJS and Prisma, and optimizing PostgreSQL databases, resulting in robust and secure app functionality.",
+    "professionalExpSkills": [
+      {
+        "skillId": 5,
+        "skill": {
+          "id": 5,
+          "name": "React Native",
+          "category": "Framework"
+        },
+        "professionalExperienceId": 4
+      },
+      {
+        "skillId": 8,
+        "skill": {
+          "id": 8,
+          "name": "PostgreSQL",
+          "category": "Database"
+        },
+        "professionalExperienceId": 4
+      },
+      {
+        "skillId": 10,
+        "skill": {
+          "id": 10,
+          "name": "AWS",
+          "category": "DevOps"
+        },
+        "professionalExperienceId": 4
+      },
+      {
+        "skillId": 15,
+        "skill": {
+          "id": 15,
+          "name": "NodeJS",
+          "category": "Framework"
+        },
+        "professionalExperienceId": 4
+      }
+    ]
+  }
+]
