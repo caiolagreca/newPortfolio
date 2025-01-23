@@ -15,7 +15,7 @@ builder.Services.AddScoped<IService<Book>, BookStaticService>();
 builder.Services.AddScoped<IService<Challenge>, ChallengeSaticService>();
 builder.Services.AddScoped<IService<ProfessionalExperience>, ProExpService>();
 builder.Services.AddScoped<IService<Project>, ProjectService>();
-builder.Services.AddScoped<IService<Skill>, SkillService>();
+builder.Services.AddScoped<IService<Skill>, SkillStaticService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
