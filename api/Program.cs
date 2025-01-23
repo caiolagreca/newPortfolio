@@ -32,6 +32,16 @@ builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql("Host
 
 var app = builder.Build();
 
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == HttpMethods.Head)
+    {
+        // Redireciona HEAD para GET
+        context.Request.Method = HttpMethods.Get;
+    }
+    await next();
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
