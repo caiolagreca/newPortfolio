@@ -20,7 +20,7 @@ namespace api.Services
           Directory.GetCurrentDirectory(),
           "data",
           "staticJSON",
-          "books.json"
+          "professionalExperience.json"
       );
 
       if (!File.Exists(jsonPath))
