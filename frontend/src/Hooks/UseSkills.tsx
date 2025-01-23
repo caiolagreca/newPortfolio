@@ -87,6 +87,5 @@ export const useSkills = () => {
 		skillOrder,
 		loading,
 		containerRef,
-		hasFetched,
 	};
 };

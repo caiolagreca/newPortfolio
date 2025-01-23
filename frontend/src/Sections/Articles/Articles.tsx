@@ -7,7 +7,7 @@ import ArticleCard from "../../components/ArticleCard/ArticleCard";
 import SkeletonLoader from "../../components/SkeletonLoader/SkeletonLoader";
 
 const Articles: React.FC = () => {
-	const { articles, serverError, loading } = useArticles();
+	const { articles, serverError, loading, containerRef } = useArticles();
 
 	const settings = {
 		dots: true,
@@ -35,7 +35,11 @@ const Articles: React.FC = () => {
 	};
 
 	return (
-		<section id="articles" className="py-16 bg-gray-50 dark:bg-gray-900">
+		<section
+			id="articles"
+			ref={containerRef}
+			className="py-16 bg-gray-50 dark:bg-gray-900"
+		>
 			<div className="container mx-auto px-6 text-center">
 				<h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-12">
 					Articles I’ve Written
