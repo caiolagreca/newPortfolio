@@ -10,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 //ConnectionString in the EnvironmentVariable
 builder.Configuration.AddEnvironmentVariables();
 
+builder.Services.AddScoped<IService<Article>, ArticleStaticService>();
+builder.Services.AddScoped<IService<Book>, BookStaticService>();
+builder.Services.AddScoped<IService<Challenge>, ChallengeService>();
 builder.Services.AddScoped<IService<Book>, BookService>();
 builder.Services.AddScoped<IService<Article>, ArticleService>();
 builder.Services.AddScoped<IService<Book>, BookService>();
