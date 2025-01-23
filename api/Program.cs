@@ -13,10 +13,6 @@ builder.Configuration.AddEnvironmentVariables();
 builder.Services.AddScoped<IService<Article>, ArticleStaticService>();
 builder.Services.AddScoped<IService<Book>, BookStaticService>();
 builder.Services.AddScoped<IService<Challenge>, ChallengeService>();
-builder.Services.AddScoped<IService<Book>, BookService>();
-builder.Services.AddScoped<IService<Article>, ArticleService>();
-builder.Services.AddScoped<IService<Book>, BookService>();
-builder.Services.AddScoped<IService<Challenge>, ChallengeService>();
 builder.Services.AddScoped<IService<ProfessionalExperience>, ProExpService>();
 builder.Services.AddScoped<IService<Project>, ProjectService>();
 builder.Services.AddScoped<IService<Skill>, SkillService>();
@@ -32,7 +28,7 @@ builder.Services.AddCors(options =>
 
 });
 
-builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql("Host=localhost;Database=portfolio;Username=postgres;Password=ad23344263"));
 
 var app = builder.Build();
 
