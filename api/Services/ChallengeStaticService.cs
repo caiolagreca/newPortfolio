@@ -4,11 +4,11 @@ using api.Models;
 
 namespace api.Services
 {
-  public class ChallengeSaticService : IService<Challenge>
+  public class ChallengeStaticService : IService<Challenge>
   {
     private readonly List<Challenge> _challenges;
 
-    public ChallengeSaticService()
+    public ChallengeStaticService()
     {
       var jsonPath = Path.Combine(
                 Directory.GetCurrentDirectory(),

@@ -12,9 +12,9 @@ builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddScoped<IService<Article>, ArticleStaticService>();
 builder.Services.AddScoped<IService<Book>, BookStaticService>();
-builder.Services.AddScoped<IService<Challenge>, ChallengeSaticService>();
-builder.Services.AddScoped<IService<ProfessionalExperience>, ProExpService>();
-builder.Services.AddScoped<IService<Project>, ProjectService>();
+builder.Services.AddScoped<IService<Challenge>, ChallengeStaticService>();
+builder.Services.AddScoped<IService<ProfessionalExperience>, ProExpStaticService>();
+builder.Services.AddScoped<IService<Project>, ProjectStaticService>();
 builder.Services.AddScoped<IService<Skill>, SkillStaticService>();
 
 builder.Services.AddEndpointsApiExplorer();
