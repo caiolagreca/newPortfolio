@@ -7,34 +7,38 @@ import {
 	FaLinux,
 	FaNodeJs,
 	FaWordpress,
+	FaCubes,
 } from "react-icons/fa";
 import {
-	SiTypescript,
 	SiMicrosoftazure,
 	SiMongodb,
 	SiPostgresql,
-	SiCsharp,
+	SiKubernetes,
+	SiRabbitmq,
+	SiPrometheus,
 } from "react-icons/si";
 import { AiOutlineDotNet } from "react-icons/ai";
 import { TbBrandReactNative } from "react-icons/tb";
 import { DiMsqlServer, DiMysql } from "react-icons/di";
 
 export const iconMap: { [key: string]: () => JSX.Element } = {
-	ReactJS: () => <FaReact />,
-	Docker: () => <FaDocker />,
+	".NET Core": () => <AiOutlineDotNet />,
+	NodeJS: () => <FaNodeJs />,
 	PHP: () => <FaPhp />,
-	"ASP.NET Core": () => <AiOutlineDotNet />,
+	ReactJS: () => <FaReact />,
 	"React Native": () => <TbBrandReactNative />,
-	Typescript: () => <SiTypescript />,
+	Angular: () => <FaAngular />,
 	"SQL Server": () => <DiMsqlServer />,
 	PostgreSQL: () => <SiPostgresql />,
 	MySQL: () => <DiMysql />,
 	MongoDB: () => <SiMongodb />,
+	Microservices: () => <FaCubes />,
 	AWS: () => <FaAws />,
 	Azure: () => <SiMicrosoftazure />,
-	Angular: () => <FaAngular />,
+	Kubernetes: () => <SiKubernetes />,
+	Docker: () => <FaDocker />,
+	RabbitMQ: () => <SiRabbitmq />,
+	Prometheus: () => <SiPrometheus />,
 	Linux: () => <FaLinux />,
-	NodeJS: () => <FaNodeJs />,
 	WordPress: () => <FaWordpress />,
-	"C#": () => <SiCsharp />,
 };

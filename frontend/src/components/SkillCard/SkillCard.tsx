@@ -4,23 +4,25 @@ import { SkillCardProps } from "../../Types/SkillCardProps";
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
   const colorMap: { [key: string]: string } = {
-    ReactJS: "bg-blue-500",
-    Docker: "bg-blue-600",
+    ".NET Core": "bg-purple-600",
+    NodeJS: "bg-green-700",
     PHP: "bg-indigo-500",
-    "ASP.NET Core": "bg-purple-600",
+    ReactJS: "bg-blue-500",
     "React Native": "bg-blue-400",
-    Typescript: "bg-blue-700",
+    Angular: "bg-red-500",
     "SQL Server": "bg-red-600",
     PostgreSQL: "bg-blue-800",
     MySQL: "bg-orange-500",
     MongoDB: "bg-green-600",
+    Microservices: "bg-purple-500",
     AWS: "bg-yellow-500",
     Azure: "bg-blue-600",
-    Angular: "bg-red-500",
+    Kubernetes: "bg-indigo-600",
+    Docker: "bg-blue-600",
+    RabbitMQ: "bg-orange-600",
+    Prometheus: "bg-orange-500",
     Linux: "bg-gray-700",
-    NodeJS: "bg-green-700",
     WordPress: "bg-blue-900",
-    "C#": "bg-purple-700",
   };
 
   return (
