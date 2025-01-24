@@ -4,7 +4,6 @@ import {
 	FaReact,
 	FaAws,
 	FaAngular,
-	FaPython,
 	FaLinux,
 	FaNodeJs,
 	FaWordpress,
@@ -34,9 +33,8 @@ export const iconMap: { [key: string]: () => JSX.Element } = {
 	AWS: () => <FaAws />,
 	Azure: () => <SiMicrosoftazure />,
 	Angular: () => <FaAngular />,
-	Python: () => <FaPython />,
 	Linux: () => <FaLinux />,
 	NodeJS: () => <FaNodeJs />,
-	Wordpress: () => <FaWordpress />,
+	WordPress: () => <FaWordpress />,
 	"C#": () => <SiCsharp />,
 };
