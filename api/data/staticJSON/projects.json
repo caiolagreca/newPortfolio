@@ -13,7 +13,7 @@
         "skill": {
           "id": 1,
           "name": "ReactJS",
-          "category": "Framework"
+          "category": "Frontend"
         }
       }
     ]
@@ -41,7 +41,7 @@
         "skill": {
           "id": 15,
           "name": "NodeJS",
-          "category": "Framework"
+          "category": "Backend"
         }
       }
     ]
@@ -60,7 +60,7 @@
         "skill": {
           "id": 1,
           "name": "ReactJS",
-          "category": "Framework"
+          "category": "Frontend"
         }
       },
       {
@@ -78,7 +78,7 @@
         "skill": {
           "id": 15,
           "name": "NodeJS",
-          "category": "Framework"
+          "category": "Backend"
         }
       }
     ]
@@ -97,7 +97,7 @@
         "skill": {
           "id": 1,
           "name": "ReactJS",
-          "category": "Framework"
+          "category": "Frontend"
         }
       },
       {
@@ -105,17 +105,8 @@
         "skillId": 4,
         "skill": {
           "id": 4,
-          "name": "ASP.NET Core",
-          "category": "Framework"
-        }
-      },
-      {
-        "projectId": 4,
-        "skillId": 6,
-        "skill": {
-          "id": 6,
-          "name": "Typescript",
-          "category": "Programming Language"
+          "name": ".NET Core",
+          "category": "Backend"
         }
       },
       {

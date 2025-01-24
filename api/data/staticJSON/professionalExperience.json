@@ -15,7 +15,7 @@
 				"skill": {
 					"id": 1,
 					"name": "ReactJS",
-					"category": "Framework"
+					"category": "Frontend"
 				},
 				"professionalExperienceId": 1
 			},
@@ -64,7 +64,7 @@
 				"skill": {
 					"id": 1,
 					"name": "ReactJS",
-					"category": "Framework"
+					"category": "Frontend"
 				},
 				"professionalExperienceId": 2
 			},
@@ -100,7 +100,7 @@
 				"skill": {
 					"id": 15,
 					"name": "NodeJS",
-					"category": "Framework"
+					"category": "Backend"
 				},
 				"professionalExperienceId": 2
 			}
@@ -122,7 +122,7 @@
 				"skill": {
 					"id": 3,
 					"name": "PHP",
-					"category": "Programming Language"
+					"category": "Backend"
 				},
 				"professionalExperienceId": 3
 			},
@@ -131,7 +131,7 @@
 				"skill": {
 					"id": 17,
 					"name": "Wordpress",
-					"category": "Framework"
+					"category": "Frontend"
 				},
 				"professionalExperienceId": 3
 			},
@@ -162,7 +162,7 @@
 				"skill": {
 					"id": 5,
 					"name": "React Native",
-					"category": "Framework"
+					"category": "Frontend"
 				},
 				"professionalExperienceId": 4
 			},
@@ -189,7 +189,7 @@
 				"skill": {
 					"id": 15,
 					"name": "NodeJS",
-					"category": "Framework"
+					"category": "Backend"
 				},
 				"professionalExperienceId": 4
 			}

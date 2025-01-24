@@ -22,7 +22,7 @@ export const useSkills = () => {
 
 	const containerRef = useRef<HTMLElement>(null);
 
-	const categoryOrder = ["Backend", "Frontend", "Database", "DevOps & Cloud"];
+	const categoryOrder = ["Backend", "Frontend", "Database", "DevOps"];
 
 	const skillOrder: { [key: string]: string[] } = {
 		Backend: ["NodeJS", ".NET Core", "PHP", "Microservices", "RabbitMQ"],
@@ -32,7 +32,7 @@ export const useSkills = () => {
 			"Angular",
 			"WordPress",
 		],
-		"DevOps & Cloud": ["Docker", "Kubernetes", "AWS", "Azure", "Linux", "Prometheus"],
+		"DevOps": ["Docker", "Kubernetes", "AWS", "Azure", "Linux", "Prometheus"],
 		Database: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB"],
 	};
 
