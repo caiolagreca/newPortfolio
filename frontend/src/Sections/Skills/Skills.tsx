@@ -19,7 +19,7 @@ const Skills: React.FC = () => {
 			ref={containerRef}
 			className="bg-gray-200 dark:bg-gray-800 py-16"
 		>
-			<div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
+			<div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
 				<h1 className="text-3xl font-semibold text-center py-6 text-gray-800 dark:text-gray-100">
 					Skills
 				</h1>
