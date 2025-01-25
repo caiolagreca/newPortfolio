@@ -14,13 +14,11 @@ import {
 	SiMongodb,
 	SiPostgresql,
 	SiKubernetes,
-	SiRabbitmq,
-	SiPrometheus,
-	SiRedis,
+	SiRabbitmq
 } from "react-icons/si";
 import { AiOutlineDotNet } from "react-icons/ai";
 import { TbBrandReactNative } from "react-icons/tb";
-import { DiMsqlServer, DiMysql } from "react-icons/di";
+import { DiMsqlServer, DiMysql, DiRedis } from "react-icons/di";
 
 export const iconMap: { [key: string]: () => JSX.Element } = {
 	".NET Core": () => <AiOutlineDotNet />,
@@ -39,8 +37,7 @@ export const iconMap: { [key: string]: () => JSX.Element } = {
 	Kubernetes: () => <SiKubernetes />,
 	Docker: () => <FaDocker />,
 	RabbitMQ: () => <SiRabbitmq />,
-	Prometheus: () => <SiPrometheus />,
-	Redis: () => <SiRedis />,
+	Redis: () => <DiRedis />,
 	Linux: () => <FaLinux />,
 	WordPress: () => <FaWordpress />,
 };
