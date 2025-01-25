@@ -21,6 +21,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
     Docker: "bg-blue-600",
     RabbitMQ: "bg-orange-600",
     Prometheus: "bg-orange-500",
+    Redis: "bg-red-700",
     Linux: "bg-gray-700",
     WordPress: "bg-blue-900",
   };

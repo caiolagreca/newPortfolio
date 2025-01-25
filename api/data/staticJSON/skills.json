@@ -52,7 +52,7 @@
 	{
 		"id": 11,
 		"name": "Microservices",
-		"category": "DevOps"
+		"category": "Backend"
 	},
 	{
 		"id": 12,
@@ -81,8 +81,8 @@
 	},
 	{
 		"id": 17,
-		"name": "Prometheus",
-		"category": "DevOps"
+		"name": "Redis",
+		"category": "Database"
 	},
 	{
 		"id": 18,

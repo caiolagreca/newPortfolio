@@ -16,6 +16,7 @@ import {
 	SiKubernetes,
 	SiRabbitmq,
 	SiPrometheus,
+	SiRedis,
 } from "react-icons/si";
 import { AiOutlineDotNet } from "react-icons/ai";
 import { TbBrandReactNative } from "react-icons/tb";
@@ -39,6 +40,7 @@ export const iconMap: { [key: string]: () => JSX.Element } = {
 	Docker: () => <FaDocker />,
 	RabbitMQ: () => <SiRabbitmq />,
 	Prometheus: () => <SiPrometheus />,
+	Redis: () => <SiRedis />,
 	Linux: () => <FaLinux />,
 	WordPress: () => <FaWordpress />,
 };
