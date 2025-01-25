@@ -24,7 +24,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("http://localhost:3000", "https://new-portfolio-sigma-ebon.vercel.app").AllowAnyMethod().AllowAnyHeader());
+    options.AddPolicy("AllowFrontend", builder => builder.WithOrigins("http://localhost:3000", "https://new-portfolio-caio.vercel.app").AllowAnyMethod().AllowAnyHeader());
 
 });
 
