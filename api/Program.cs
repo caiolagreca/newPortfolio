@@ -28,8 +28,6 @@ builder.Services.AddCors(options =>
 
 });
 
-builder.Services.AddDbContext<AppDbContext>((options) => options.UseNpgsql("Host=localhost;Database=portfolio;Username=postgres;Password=ad23344263"));
-
 var app = builder.Build();
 
 app.Use(async (context, next) =>

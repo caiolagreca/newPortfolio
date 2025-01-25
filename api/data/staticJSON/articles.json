@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Cybersecurity Concepts",
-    "description": "This article explores key cybersecurity concepts, focusing on the CIA Triad (Confidentiality, Integrity, Availability), along with Authentication and Non-repudiation. It covers various types of cyber threats and protection mechanisms, emphasizing best practices such as encryption, multi-factor authentication, firewalls, and regular system updates to enhance security.",
+    "description": "This article explores key cybersecurity concepts, focusing on Confidentiality, Integrity, and Availability, along with Authentication. It covers various types of cyber threats and protection mechanisms, emphasizing best practices such as encryption, MFA and firewalls.",
     "topic": "Cybersecurity",
     "imageUrl": "https://res.cloudinary.com/dhqd7xwyx/image/upload/c_thumb,w_200,g_face/v1729643223/Design_sem_nome_1_fl7kwx.png",
     "urlArticle": "https://www.linkedin.com/pulse/cybersecurity-concepts-caio-lagreca-fy1ac/?trackingId=tDA7nPt5RIaTX8HpKm%2FECQ%3D%3D"
