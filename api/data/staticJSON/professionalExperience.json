@@ -8,7 +8,7 @@
 		"startDate": "15/10/2021",
 		"endDate": "30/10/2022",
 		"isCurrent": false,
-		"description": "Developed and deployed multiple web applications using React, enhancing application stability, interactivity, and user experience. Ensured high-quality, maintainable code across all development stages by implementing rigorous code reviews and comprehensive testing procedures, significantly reducing bug rates post-launch. Streamlined development and deployment processes by managing containers with Docker Compose, creating consistent and isolated environments for efficient replication and setup. Collaborated with clients and the UI/UX design team to optimize product design, resulting in improved user satisfaction and seamless implementation of design solutions.",
+		"description": "Maintained and enhanced the project management system, ensuring performance, scalability, and compatibility across devices. Built new features using React and integrated external APIs, improving system functionality and user experience. Fixed bugs, optimized the database, and improved system speed with indexing. Managed Docker for reliable development and deployment, ensuring smooth system updates and stability.",
 		"professionalExpSkills": [
 			{
 				"skillId": 1,
@@ -126,7 +126,7 @@
 		"isCurrent": false,
 		"description": "Modernized and maintained dynamic webpages using PHP, WordPress, and MySQL, improving site performance and user experience while optimizing page load times.Enhanced application response times and backend efficiency by managing web development projects focused on middleware and API connectivity, streamlining data exchange processes and improving system performance. Improved code quality and system reliability by implementing robust backend functionalities, maintaining data storage solutions, and ensuring proper documentation of the codebase.",
 		"professionalExpSkills": [
-			{ 
+			{
 				"skillId": 3,
 				"skill": {
 					"id": 3,
