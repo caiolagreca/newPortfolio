@@ -1,0 +1,19 @@
+# Build Stage
+FROM node:18-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+# Production Stage
+FROM nginx:stable-alpine AS production
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+#Nesse arquivo eh utilizado o multi-stage Build.
+#Primeiro estagio (Build): Usamos uma imagem Node para instalar as dependencias e executar npm run build, gerando arquivos estaticos otimizados (na pasta build).
+#Segundo estagio (production): Usa uma imagem leve do Nginx e copia apenas o necessario (os arquivos estaticos gerados) para servir a aplicacao. Ou seja, todos os arquivos do codigo fonte e dependencias de desenvolvimento sao descartados na producao, diminuindo o tamanho da imagem.
+
+#VER COMANDOS PARA RODAR DOCKER NO README.MD

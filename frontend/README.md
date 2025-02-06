@@ -13,11 +13,10 @@ npm i -D tailwindcss
 npx tailwindcss init
 ```
 
-
 Minimize Backend Latency:
 
 Cold Starts: Free tiers on Render may introduce cold starts if the service scales down after inactivity. Consider using a service that pings your backend periodically to keep it “warm,” or upgrade to a tier that reduces cold start times.
-Optimize Queries: Create indexes on frequently queried columns and ensure you’re only returning the data you need (avoid SELECT * if not necessary).
+Optimize Queries: Create indexes on frequently queried columns and ensure you’re only returning the data you need (avoid SELECT \* if not necessary).
 Reduce Round Trips: Instead of multiple endpoints, consider returning all the essential data in one or fewer endpoints to cut down on multiple fetches.
 
 Incremental Loading (Lazy Loading):
@@ -32,3 +31,22 @@ On the frontend, ensure that your React build is optimized and that you’re not
 Move Non-Essential Data Out of Initial Render:
 If certain sections (e.g., LeetCode challenges or a large article list) aren’t critical on the first screen, fetch them after the initial render or only when the user navigates to those sections. This approach improves initial perception of speed.
 
+- Containerizacao Docker:
+
+1. Rodando projeto em ambiente de desenvolvimento (Dockerfile.dev):
+
+```bash
+docker build -f Dockerfile.dev -t frontend-dev .
+docker run -d frontend-dev
+#rodar projeto no navegador:
+http://localhost:3000
+```
+
+2. Rodando projeto parap producao (Dockerfile.prod):
+
+```bash
+docker build -f Dockerfile.prod -t frontend-prod .
+docker run -d frontend-prod
+#rodar projeto no navegador:
+http://localhost
+```
